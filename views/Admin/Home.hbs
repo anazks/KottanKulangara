@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .file_img{
+            height: 50px;
+            width: 50px;
+        }
+        .box {
+            margin-top: 100px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+        }
+        .mt-sm-navbar {
+            margin-top: 100px; /* Adjust this value according to your navbar height */
+        }
+        @media (max-width: 767.98px) {
+            .box {
+                margin-top: 20px; /* Adjust margin-top for mobile view */
+            }
+        }
+        .form-container, .table-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+    </style>
+</head>
+<body>
+    {{>Nav}}
+  
+    <div class="container mt-sm-navbar">
+        <div class="row"> <!-- Added g-4 for gutters between columns -->
+            <div class="col-md-5 form-container box p-5 ">
+                <h2>Upload Images</h2>
+                <form id="uploadForm" action="/admin/addFiles" method="post" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <input name="description" type="text" class="form-control" id="description" placeholder="Type something about the picture">
+                    </div>
+                    <div class="mb-3">
+                        <label for="category" class="form-label">Category</label>
+                        <select class="form-select" id="category" name="category">
+                            <option value="New-Photos">New Photos</option>
+                            <option value="celebrations">celebrations</option>
+                            <option value="Committee">Committee</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="file" class="form-label">Upload File</label>
+                        <input type="file" name="image" class="form-control" id="file">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+            <div class="col-md-12 table-container box p-5">
+                <h2>Uploaded Details</h2>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Description</th>
+                                <th>Category</th>
+                                <th>File</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="detailsTable">
+                            {{#each files}}
+                                <tr>
+                                    <td>{{description}}</td>
+                                    <td>{{category}}</td>
+                                    <td><img src='/images/uploadIMG/{{_id}}.jpg' alt="No img found" class="file_img"></td>
+                                    <td><a href="/admin/delete/{{_id}}" class="btn btn-danger" aria-colcount=>Delete</a>
+                                    <a href="/admin/update/{{_id}}" class="btn btn-success" aria-colcount=>Edit</a></td>
+                            
+
+                                </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+</body>
+</html>

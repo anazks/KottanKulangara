@@ -13,7 +13,9 @@ const getLogin = (req,res)=>{
 const getHome = async (req,res)=>{
     try {
         let files = await filesModel.find({})
-       res.render('admin/Home',{files}) 
+        let notifications = await notificationModel.find({})
+        console.log(files,notifications)
+       res.render('admin/Home',{files,notifications}) 
     } catch (error) {
         res.render('admin/Home')  
     }
@@ -39,6 +41,16 @@ const deleteFile = async (req,res)=>{
     try {
         let {id} = req.params
         let deleteid = await filesModel.findByIdAndDelete({_id:id})
+        res.redirect('/admin/Home')
+    } catch (error) {
+        console.log(error)
+        res.redirect('/admin/Home')
+    }
+}
+const deleteAnnounce = async (req,res)=>{
+    try {
+        let {id} = req.params
+        let deleteid = await notificationModel.findByIdAndDelete({_id:id})
         res.redirect('/admin/Home')
     } catch (error) {
         console.log(error)
@@ -108,15 +120,26 @@ const addFiles =async (req,res)=>{
         res.redirect('/admin')
     }
 }
-const addNotifications = async (req,res)=>{
+const   addNotifications = async (req,res)=>{
     try {
         console.log("adding notification")
         console.log(req.body)
-        let { description,category } = req.body;
+        // let { description,category } = req.body;
         let notification = await notificationModel.create(req.body)
+        console.log(notification,"-----------------------add")
         res.redirect('/admin/home') 
     } catch (error) { 
+        console.log(error
+            )
         res.redirect('/admin/home') 
     }
 }
-module.exports = {getLogin,getHome,addFiles,adminLogin,deleteFile,update,updateFiles,addNotifications}
+// const getAnnouncement = async (req,res)=>{
+//     try {
+//         let notifications = await notificationModel.find({})
+//         res.render('admin/Announcement',{notifications})
+//     } catch (error) {
+//         res.render('admin/Announcement')
+//     }
+// }
+module.exports = {getLogin,getHome,addFiles,adminLogin,deleteFile,update,updateFiles,addNotifications,deleteAnnounce}

@@ -92,8 +92,8 @@
                 <h2>Upload NOtifications</h2>
                 <form id="uploadForm" action="/admin/addNotifications" method="post">
                     <div class="mb-3">
-                        <label for="description" class="form-label">Description</label>
-                        <input name="description" type="text" class="form-control" id="description" placeholder="Type something about the picture">
+                        <label for="notifications" class="form-label">Description</label>
+                        <input name="notifications" type="text" class="form-control" id="description" placeholder="Type something about the picture">
                     </div>
                     <div class="mb-3">
                         <label for="category" class="form-label">Category</label>
@@ -108,7 +108,33 @@
             </div>
         </div>
     </div>
+<div class="col-md-12 table-container box p-5">
+                <h2>Uploaded Details</h2>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Description</th>
+                                <th>Category</th>
+                                {{!-- <th>File</th>
+                                <th>Actions</th> --}}
+                            </tr>
+                        </thead>
+                        <tbody id="detailsTable">
+                            {{#each notifications}}
+                                <tr>
+                                    <td>{{notifications}}</td>
+                                    <td>{{category}}</td>
+                                    {{!-- <td><img src='/images/uploadIMG/{{_id}}.jpg' alt="No img found" class="file_img"></td> --}}
+                                    <td><a href="/admin/deleteAnnounce/{{_id}}" class="btn btn-danger" aria-colcount=>Delete</a>
+                                    {{!-- <a href="/admin/update/{{_id}}" class="btn btn-success" aria-colcount=>Edit</a></td> --}}
+                            
 
+                                </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>

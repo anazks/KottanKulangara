@@ -27,9 +27,9 @@ const adminLogin = async(req,res)=>{
             
         } = req.body;
         if(userName =="jayan@admin.com" && password == "jayan@123"){
-            res.render('admin/Home')  
+            res.render('Admin/Home')  
         }else{
-            res.render('admin/Home')  
+            res.render('Admin/Home')  
         }
     } catch (error) {
         console.log(error)

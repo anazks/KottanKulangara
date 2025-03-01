@@ -9,9 +9,12 @@ router.get('/',  async function(req, res, next) {
   try {
     let previousWorks =  await fileModel.find({category:'Committee'})
     let Interior = await fileModel.find({category:'celebrations'})
-    console.log(previousWorks)
+    let Genaral =await NotificationModel.find({category:'Genaral'})
+    let Special =await NotificationModel.find({category:'Special'})
+
+    console.log(previousWorks,Genaral,Special,"data from index")
     console.log(Interior,"interior")
-     res.render('user/index', { previousWorks,Interior});
+     res.render('user/index', { previousWorks,Interior,Genaral,Special});
   } catch (error) {
     console.log(error)
     res.redirect('/')

@@ -13,11 +13,12 @@ const getLogin = (req,res)=>{
 const getHome = async (req,res)=>{
     try {
         let files = await filesModel.find({})
+    //    res.render('Admin/Home',{files}) 
         let notifications = await notificationModel.find({})
         console.log(files,notifications)
-       res.render('admin/Home',{files,notifications}) 
+       res.render('Admin/Home',{files,notifications}) 
     } catch (error) {
-        res.render('admin/Home')  
+        res.render('Admin/Home')  
     }
 }
 const adminLogin = async(req,res)=>{
@@ -29,9 +30,9 @@ const adminLogin = async(req,res)=>{
             
         } = req.body;
         if(userName =="jayan@admin.com" && password == "jayan@123"){
-            res.render('admin/Home')  
+            res.render('Admin/Home')  
         }else{
-            res.render('admin/Home')  
+            res.redirect('/') 
         }
     } catch (error) {
         console.log(error)
@@ -134,6 +135,8 @@ const   addNotifications = async (req,res)=>{
         res.redirect('/admin/home') 
     }
 }
+module.exports = {getLogin,getHome,addFiles,adminLogin,deleteFile,update,updateFiles,addNotifications}
+
 // const getAnnouncement = async (req,res)=>{
 //     try {
 //         let notifications = await notificationModel.find({})

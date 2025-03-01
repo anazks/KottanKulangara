@@ -861,6 +861,7 @@ a:hover {
 
 .intro {
   height: 100vh;
+
   position: relative;
   color: #ffffff;
 }
@@ -1739,6 +1740,7 @@ footer .credits {
   .intro-single .title-single-box .title-single {
     font-size: 2.1rem;
   }
+ 
 
   .grid .card-box-a,
   .grid .card-box-b,

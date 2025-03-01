@@ -13,9 +13,9 @@ const getLogin = (req,res)=>{
 const getHome = async (req,res)=>{
     try {
         let files = await filesModel.find({})
-       res.render('admin/Home',{files}) 
+       res.render('Admin/Home',{files}) 
     } catch (error) {
-        res.render('admin/Home')  
+        res.render('Admin/Home')  
     }
 }
 const adminLogin = async(req,res)=>{

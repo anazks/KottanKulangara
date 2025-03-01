@@ -1,15 +1,16 @@
 var express = require('express');
 const { route } = require('./admin');
 var router = express.Router();
+const NotificationModel = require('../model/Notification')
 var fileModel = require('../model/FileModel')
 
 /* GET home page. */
 router.get('/',  async function(req, res, next) {
   try {
     let previousWorks =  await fileModel.find({category:'Committee'})
-    let Interior = await fileModel.find({category:'Committee'})
+    let Interior = await fileModel.find({category:'celebrations'})
     console.log(previousWorks)
-    console.log(Interior)
+    console.log(Interior,"interior")
      res.render('user/index', { previousWorks,Interior});
   } catch (error) {
     console.log(error)
@@ -28,9 +29,11 @@ router.get('/card',(req,res)=>{
 router.get('/interior', async(req,res)=>{
   try {
     console.log("interior-----------")
-    let data =await fileModel.find({category:'Interior'})
-    console.log(data,"data from interiour")
-    res.render('user/property-grid',{data})
+    let Genaral =await NotificationModel.find({category:'Genaral'})
+    let Special =await NotificationModel.find({category:'Special'})
+
+    console.log(Genaral,Special,"data from interiour")
+    res.render('user/property-grid',{Genaral,Special})
   } catch (error) {
     console.log(error)
     res.redirect('/')

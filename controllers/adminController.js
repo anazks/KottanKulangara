@@ -1,5 +1,6 @@
 const FileModel = require('../model/FileModel')
 const filesModel = require('../model/FileModel')
+const notificationModel = require('../model/Notification')
 const getLogin = (req,res)=>{
         try {
             console.log("reached controllers")
@@ -21,10 +22,11 @@ const adminLogin = async(req,res)=>{
     try {
         console.log(req.body)
         let {userName} = req.body;
+        let {password} = req.body;
         let {
             
         } = req.body;
-        if(userName =="admin" && password == "admin"){
+        if(userName =="jayan@admin.com" && password == "jayan@123"){
             res.redirect('/admin/home')
         }else{
             res.redirect('/admin/')
@@ -106,4 +108,15 @@ const addFiles =async (req,res)=>{
         res.redirect('/admin')
     }
 }
-module.exports = {getLogin,getHome,addFiles,adminLogin,deleteFile,update,updateFiles}
+const addNotifications = async (req,res)=>{
+    try {
+        console.log("adding notification")
+        console.log(req.body)
+        let { description,category } = req.body;
+        let notification = await notificationModel.create(req.body)
+        res.redirect('/admin/home') 
+    } catch (error) { 
+        res.redirect('/admin/home') 
+    }
+}
+module.exports = {getLogin,getHome,addFiles,adminLogin,deleteFile,update,updateFiles,addNotifications}

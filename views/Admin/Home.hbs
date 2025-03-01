@@ -59,6 +59,7 @@
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
+            
             <div class="col-md-12 table-container box p-5">
                 <h2>Uploaded Details</h2>
                 <div class="table-responsive">
@@ -86,6 +87,24 @@
                         </tbody>
                     </table>
                 </div>
+            </div>
+             <div class="col-md-5 form-container box p-5 ">
+                <h2>Upload NOtifications</h2>
+                <form id="uploadForm" action="/admin/addNotifications" method="post">
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <input name="description" type="text" class="form-control" id="description" placeholder="Type something about the picture">
+                    </div>
+                    <div class="mb-3">
+                        <label for="category" class="form-label">Category</label>
+                        <select class="form-select" id="category" name="category">
+                            <option value="Genaral">Genaral</option>
+                            <option value="Special">Special</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
             </div>
         </div>
     </div>

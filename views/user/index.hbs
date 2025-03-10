@@ -30,294 +30,8 @@
       
       width: 250px;
     }
-    /* General navbar styling */
-.navbar {
-  padding: 5px 0;  /* Reducing padding for the navbar */
-}
-
-/* Adjust navbar brand (temple name) styling */
-.navbar-brand {
-  font-size: 1.25rem; /* Adjust font size if needed */
-  margin-left: 10px; /* Reducing left margin to bring the brand name closer to the icon */
-  margin-right: 10px; /* Adjust right margin for better spacing */
-}
-
-/* Reduce space between navbar-toggler (hamburger icon) and brand */
-.navbar-toggler {
-  border: none;
-  margin-left: 5px;  /* Reduce space between icon and name */
-  padding: 0;  /* Remove extra padding from the hamburger icon */
-}
-
-/* Navbar items - links */
-.navbar-nav {
-  justify-content: center; /* Center align navbar links */
-}
-
-/* For smaller screens (responsive design) */
-@media (max-width: 768px) {
-  /* Adjust navbar items alignment */
-  .navbar-collapse {
-    flex-grow: 1;
-    justify-content: flex-start;  /* Align navbar items towards left on small screens */
-  }
-
-  /* Align navbar items vertically on small screens */
-  .navbar-nav {
-    flex-direction: column;
-    padding-left: 0;
-  }
-
-  /* Navbar links */
-  .navbar-nav .nav-link {
-    font-size: 1.2rem;  /* Increase font size slightly for better readability on small screens */
-    padding: 10px 15px;
-  }
-}
-/* Make the carousel container fill the full width */
-.owl-carousel .carousel-item-a {
-  position: relative;
-  width: 100% !important;
-  height: 100vh; /* Adjust height to your preference */
-  background-size: cover;
-  background-position: center center;
-}
-
-/* Ensure the image takes up the full width and height */
-.bg-image {
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center center;
-}
-
-.overlay-a {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4); /* You can change the overlay color */
-  z-index: 1;
-}
-
-/* Ensure content is properly displayed */
-.intro-content {
-  position: relative;
-  z-index: 2;
-  display: table;
-  width: 100%;
-  height: 100%;
-}
-/* Make sure the carousel container fills the entire screen */
-.intro-carousel {
-  position: relative;
-  width: 100%;
-  height: 100vh; /* Makes the carousel fill the full height of the viewport */
-  overflow: hidden;
-}
-
-/* Carousel Item */
-.owl-carousel .carousel-item-a {
-  position: relative;
-  width: 100%;
-  height: 100vh; /* Ensure the carousel item takes up full height */
-  background-size: cover;
-  background-position: center center;
-}
-
-/* Make the background image fill the entire container */
-.bg-image {
-  width: 90%;
-  height: 80%;
-  background-size: cover;
-  object-fit: cover;
-  background-position: center center;
-}
-
-/* Overlay styling */
-.overlay-a {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4); /* Add a dark overlay for better text visibility */
-  z-index: 1;
-}
-
-/* Position the content correctly */
-.intro-content {
-  position: relative;
-  z-index: 2;
-  display: table;
-  width: 100%;
-  height: 100%;
-}
-
-/* Adjusting content layout */
-.intro-body {
-  position: relative;
-  z-index: 2;
-  padding: 20px;
-  color: #fff; /* Ensure text is visible over the dark overlay */
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .intro-carousel {
-    height: 80vh; /* Reduce the height for smaller screens */
-    width: 130%;
-
-  }
-
-  .intro-title {
-    font-size: 1.8rem; /* Adjust the title size for small screens */
-  }
-
-  .intro-subtitle {
-    font-size: 1rem; /* Adjust subtitle size for small screens */
-  }
-
-  /* Adjust the column width for smaller screens */
-  .col-lg-8, .col-lg-4 {
-    width: 100%;
-    text-align: center;
-  }
-}
-
-/* Style for the Image Section */
-.image-section {
-  background-color: #f7f7f7;
-  padding-top: 50px;
-  padding-bottom: 50px;
-}
-
-/* Style for individual image items */
-.image-item {
-  position: relative;
-  overflow: hidden;
-  border-radius: 8px;
-}
-
-/* Ensures images fill their container responsively */
-.image-item img {
-  width: 100%;
-  height: auto;
-  transition: transform 0.3s ease-in-out;
-}
-
-/* Add an overlay on hover */
-.image-item:hover img {
-  transform: scale(1.1);
-}
-
-/* Style for the overlay */
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
-}
-
-/* Style for the overlay text */
-.overlay-text {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  color: white;
-}
-
-.overlay-text h4 {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-}
-
-.overlay-text p {
-  font-size: 1rem;
-}
-
-/* Show overlay on hover */
-.image-item:hover .overlay {
-  opacity: 1;
-}
-
-/* Media Queries for responsiveness */
-@media (max-width: 992px) {
-  .image-item {
-    border-radius: 4px;
-  }
-}
-
-@media (max-width: 768px) {
-  .image-section {
-    padding-top: 30px;
-    padding-bottom: 30px;
-  }
-
-  .image-item h4 {
-    font-size: 1.2rem;
-  }
-
-  .overlay-text p {
-    font-size: 0.9rem;
-  }
-}
-
-@media (max-width: 576px) {
-  .overlay-text h4 {
-    font-size: 1rem;
-  }
-
-  .overlay-text p {
-    font-size: 0.8rem;
-  }
-  .notification-marquee {
-    position: relative;
-    background-color: #f8d7da;
-    color: #721c24;
-    padding: 10px;
-    font-size: 14px;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.notification-text {
-    color: #721c24;
-    white-space: nowrap;
-}
-
-.notification-item {
-    display: inline-block;
-    padding: 0 15px;
-}
-
-}
-
-  </style>
-  <!-- =======================================================
-    Theme Name: EstateAgency
-    Theme URL: https://bootstrapmade.com/real-estate-agency-bootstrap-template/
-    Author: BootstrapMade.com
-    License: https://bootstrapmade.com/license/
-  ======================================================= -->
-</head>
-
-<body>
-
-  <div class="click-closed"></div>
-  <!--/ Form Search Star /-->
-  
-  </div>
-  <!--/ Form Search End /-->
-
-  <!--/ Nav Star /-->
-  <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top p-4">
+    </style>
+<nav class="navbar navbar-default navbar-trans fixed-top navbar-expand-lg">
   <div class="container">
     <!-- Navbar toggler (hamburger icon) -->
     <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
@@ -327,10 +41,9 @@
       <span></span>
     </button>
 
-    <!-- Temple name -->
     <a href="" class="navbar-brand">ശ്രീ കൊറ്റൻകുളങ്ങര ദേവീക്ഷേത്രം</a>
 
-    <!-- Navbar links -->
+ 
     <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
       <ul class="navbar-nav">
         <li class="nav-item">
@@ -347,6 +60,53 @@
   </div>
 </nav>
 
+<style>
+  /* CSS for navbar height and scroll behavior */
+  .navbar {
+    min-height: 60px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  /* Class to hide navbar when scrolling down */
+  .navbar-hidden {
+    transform: translateY(-100%);
+  }
+  
+  /* Add some space at the top of the page to prevent content from being hidden under the navbar */
+  body {
+    padding-top: 80px;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    let lastScrollTop = 0;
+    const navbar = document.querySelector('.navbar');
+    const scrollThreshold = 10; // Minimum amount of scroll before triggering hide/show
+    
+    window.addEventListener('scroll', function() {
+      let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+      
+      // Determine scroll direction
+      if (Math.abs(lastScrollTop - currentScroll) <= scrollThreshold) {
+        return; // Don't do anything if the scroll amount is minimal
+      }
+      
+      // Scrolling down and not at the top of the page
+      if (currentScroll > lastScrollTop && currentScroll > navbar.offsetHeight) {
+        navbar.classList.add('navbar-hidden');
+      } 
+      // Scrolling up
+      else {
+        navbar.classList.remove('navbar-hidden');
+      }
+      
+      lastScrollTop = currentScroll;
+    });
+  });
+</script>
   <!--/ Nav End /-->
 
   <!--/ Carousel Star /-->
@@ -368,7 +128,7 @@
         {{/if}} --}}
 
         <!-- First carousel item -->
-        <div class="carousel-item-a intro-item bg-image" style="background-image: url('img/banr2.png');">
+        <div class="carousel-item-a intro-item bg-image" style="background-image: url('img/banr2.png">
             <div class="overlay overlay-a"></div>
             <div class="intro-content display-table">
                 <div class="table-cell">
@@ -451,47 +211,12 @@
       </div>
       <div class="row">
         <div class="p-2">
-          <p>
-                        ഭക്തസഹസ്രങ്ങൾക്ക് അഭയവും ആശ്വാസവും അരുളുന്ന സാത്വികഭാവത്തിലുള്ള സ്വയംഭൂവായ വന
-                        ദുർഗ്ഗയുടെ പുണ്യപുരാതന ക്ഷേത്രമാണ് ചവറ ശ്രീ കൊറ്റൻകുളങ്ങര ദേവീക്ഷേത്രം. തിരുവിതാംകൂർ ദേവസ്വം
-                        ബോർഡിന്റെ കീഴിലുള്ള മേജർ ക്ഷേത്രങ്ങളിലൊന്നായ ഈ ക്ഷേത്രത്തിൻ്റെ പേരിൽതന്നെ ആത്മീയതയുടെ പരി
-                        പാവനത്വം തുളുമ്പി നിൽക്കുന്നു. ക്ഷേത്രം സ്ഥിതി ചെയ്യുന്ന സ്ഥലം പുരാതനകാലത്ത് കാടും പടലും ഇട
-                        തൂർന്ന് വളർന്നിരുന്ന സ്ഥലമായിരുന്നു. ഇപ്പോഴത്തെ ക്ഷേത്രാങ്കണത്തിൻ്റെ വടക്കുപടിഞ്ഞാറേ മൂലയ്ക്ക് ഭൂത
-                        ക്കുളം എന്നറിയപ്പെട്ടിരുന്ന ചെറിയകുളവും ഇന്ന് കാണുന്ന ക്ഷേത്രകുളത്തിൻ്റെ സ്ഥാനത്ത് വിസ്തൃതമായ
-                        ചിറയും. വർഷകാലങ്ങളിൽ ഇവ രണ്ടും കരകവിഞ്ഞ് സമീപത്തുള്ള പാടങ്ങളിലേക്ക് ഒഴുകുന്നു. പുല്ലും
-                        വെള്ളവും സുലഭമായ ഈ പ്രദേശത്ത് സമീപവാസികളായ കുട്ടികൾ കാലികളെ മേയ്ക്കാൻ ഇടം കണ്ടെത്തി.
-                        ഒരു ദിവസം അടർന്നുവീണുകിട്ടിയ നാളീകേരം ഭൂതക്കുളത്തിന് തെക്കുകിഴക്ക് ഉയർന്നുനിന്നിരുന്ന കല്ലിൽ
-                        വെച്ച് തൊണ്ട് നീക്കം ചെയ്യാൻ ശ്രമിക്കവെ നാളീകേരം കല്ലിൽ തട്ടിയപ്പോൾ ശിലയിൽ നിന്ന് നിണം വാർന്നുവ
-                        ന്നു. പരിഭ്രാന്തരായ അവർ വീടുകളിലെ മുതിർന്നവരെ വിവരം ധരിപ്പിച്ചു. നാട്ടുപ്രമാണിമാരുടെ നേതൃത്വത്തിൽ
-                        പ്രശ്‌നം വയ്പ്പിച്ച് നോക്കിയപ്പോൾ ശിലയിൽ സാത്വികഭാവത്തിലുള്ള വനദുർഗ്ഗ കുടികൊള്ളുന്നുവെന്നും നാടി
-                        ന്റെയും നാട്ടുകാരുടെയും ഐശ്വര്യത്തിന് വേണ്ടി ക്ഷേത്രം നിർമ്മിച്ച് പൂജാദികർമ്മങ്ങൾ നിർവ്വഹിക്കണമെന്നും
-                        കാണാൻ കഴിഞ്ഞു. അന്നേദിവസം മുതൽ നാളീകേരം ഇടിച്ചുപിഴിഞ്ഞെടുത്ത കൊറ്റൻ ദേവിക്ക് നിവേദ്യമായി
-                        നൽകി. കുമാരന്മാർ ബാലികമാരായി വേഷം അണിഞ്ഞ് ദേവിയുടെ മുന്നിൽ വിളക്കെടുത്തു. ദിവ്യ ശിലയ്ക്ക്
-                        ചുറ്റും കുരുത്തോലപ്പന്തൽ കെട്ടി വിളക്കുവെച്ചു. കുളക്കരയിലെ സ്വയംഭൂവായ വനദുർഗ്ഗയുടെ ക്ഷേത്രം
-                        പിന്നീട് കൊറ്റൻകുളങ്ങര ക്ഷേത്രമായി അറിയപ്പെട്ടു. വായു മണ്ഡലം മേൽക്കൂരയായി സങ്കൽപ്പിക്കണമെന്നും
-                        മേൽക്കൂര പാടില്ലെന്നും ദേവപ്രശ്‌നവിധി ഉണ്ടായതിനാൽ താന്ത്രികവിധി പ്രകാരം നിർമ്മിച്ച മേൽക്കൂരയില്ലാത്ത
-                        ശ്രീകോവിലിൽ ഋതുഭേദങ്ങളെല്ലാം തന്നിലാവാഹിച്ച് ശക്തിസ്വരൂപിണിയും എന്നാൽ വാത്സല്യനിധിയുമായ ദേവി
-                        തന്റെ ഭക്തരിൽ കാരുണ്യാമൃതവർഷം ചൊരിഞ്ഞ് ഇവിടെ വാണരുളുന്നു. ദുർഗ്ഗാദേവിയെ കൂടാതെ ശ്രീ പരമേ
-                        ശ്വരൻ, ശ്രീമഹാഗണപതി, ശ്രീധർമ്മശാസ്‌താവ്, യക്ഷിയമ്മ, മാടൻഭഗവാൻ, നാഗരാജാവ് എന്നിവർ ഉപദേവതമാ
-                        രായുണ്ട്.
+          <p>ഭക്തസഹസ്രങ്ങള്‍ക്ക് അഭയവും ആശ്വാസവുമരുളുന്ന  സ്വയംഭൂവായ വീരഭട്ടാരിക വാഴുന്ന പുണ്യപുരാതന ക്ഷേത്രമാണ് ചവറ മേജര്‍ ശ്രീ കൊറ്റന്‍ കുളങ്ങര ദേവിക്ഷേത്രം. തിരുവിതാംകൂര്‍ദേവസ്വം ബോര്‍ഡിന്‍റെ കീഴിലുള്ള   മേജര്‍ ക്ഷേത്രങ്ങളിലൊന്നായ ഈ ക്ഷേത്രത്തിന്‍റെ പേരില്‍തന്നെ ആത്മീയത യുടെ പരിപാവനത്വം തുളുമ്പി നില്‍ക്കുന്നു. ക്ഷേത്രം സ്ഥിതിചെയ്യുന്ന സ്ഥലം പുരാതനകാലത്ത് കാടും പടലും ഇടതൂര്‍ന്ന് വളര്‍ന്നിരുന്ന സ്ഥലമായിരുന്നു. ഇപ്പോഴത്തെ ക്ഷേത്രാങ്കണത്തിന്‍റെ വടക്കു പടിഞ്ഞാറേ മൂലയ്ക്ക് ഭൂതക്കുളം എന്നറിയപ്പെട്ടിരുന്ന ചെറിയകുളവും ഇന്ന് കാണുന്ന ക്ഷേത്രക്കുളത്തിന്‍റെ സ്ഥാനത്ത് വിസ്തൃതമായ ചിറയും. വര്‍ഷ കാലങ്ങളില്‍ ഇവരണ്ടും കരകവിഞ്ഞ് സമീപത്തുള്ള പാടങ്ങളിലേക്ക് ഒഴുകുന്നു. പുല്ലും വെള്ളവും സുലഭമായ ഈ പ്രദേശത്ത് സമീപവാസികളായ കുട്ടികള്‍ കാലികളെ മേയ്ക്കാന്‍ ഇടം കണ്ടെത്തി. ഒരു ദിവസം അടര്‍ന്നു വീണുകിട്ടിയ നാളീകേരം ഭൂതക്കുളത്തിന് തെക്കുകിഴക്ക് ഉയര്‍ന്നുനിന്നിരുന്ന കല്ലില്‍വച്ച് തൊണ്ട് നീക്കം ചെയ്യാന്‍ ശ്രമിക്കവെ നാളീകേരം കല്ലില്‍ തട്ടിയപ്പോള്‍ ശിലയില്‍നിന്ന് നിണം വാര്‍ന്നുവന്നു. പരിഭ്രാന്തരായ അവര്‍ വീടുകളിലെ മുതിര്‍ന്നവരെ വിവരംധരിപ്പിച്ചു. നാട്ടുപ്രമാണിമാരുടെ നേതൃത്വത്തില്‍ പ്രശ്നംവയ്പ്പിച്ച് നോക്കിയപ്പോള്‍ ശിലയില്‍ വീരഭട്ടാരിക കുടികൊള്ളുന്നുവെന്നും നാടിന്‍റെ യും നാട്ടുകാരുടെയും ഐശ്വര്യത്തിന് വേണ്ട ക്ഷേത്രം നിര്‍മ്മിച്ച് പൂജാദി കര്‍മ്മങ്ങള്‍ നിര്‍വ്വഹിക്കണമെന്നും കാണാന്‍ കഴിഞ്ഞു. അന്നേദിവസം മുതല്‍ നാളീകേരം ഇടിച്ചുപിഴിഞ്ഞെടുത്ത കൊറ്റന്‍ ദേവിക്ക് നിവേദ്യമായി നല്‍കിവരുന്നു. കുമാരന്മാര്‍ ബാലികമാരായി വേഷമണിഞ്ഞ് ദേവിയുടെ മുന്നില്‍ വിളക്കെടുത്തു. ദിവ്യശിലയ്ക്ക് ചുറ്റും കുരുത്തോലപ്പന്തല്‍ കെട്ടിവിളക്കുവച്ചു. കുളക്കരയിലെ സ്വയംഭൂവായ വീരഭട്ടാരികയുടെ ക്ഷേത്രം പിന്നീട് കൊറ്റന്‍കുളങ്ങര ക്ഷേത്രമായി അറിയപ്പെട്ടു. വായുമണ്ഡലം മേല്‍ക്കൂരയായി സങ്കല്‍പ്പിക്കണമെന്നും മേല്‍ക്കൂര പാടില്ലെന്നും ദേവപ്രശ്നവിധി ഉണ്ടായതിനാല്‍ താന്ത്രികവിധി പ്രകാരം നിര്‍മ്മിച്ച മേല്‍ക്കൂരയില്ലാത്ത ശ്രീകോവിലില്‍ ഋതുദേദങ്ങളെല്ലാം തന്നിലാവാഹിച്ച് ശക്തിസ്വരൂപിണിയും എന്നാല്‍ വാത്സല്യനിധിയുമായ ദേവി തന്‍റെ ഭക്തരില്‍ കാരുണ്യാമൃതവര്‍ഷം ചൊരിഞ്ഞ് ഇവിടെ വാണരുളുന്നു. വീരഭട്ടാരികയെ കൂടാതെ ശ്രീ പരമേശ്വരന്‍, ശ്രീമഹാഗണപതി, ശ്രീധര്‍മ്മശാസ്താവ്, യക്ഷിയമ്മ, മാടന്‍ഭഗവാന്‍, നാഗരാജാവ് എന്നിവര്‍ ഉപദേവതമാരായിട്ടുണ്ട്.
+</p>
 
-                        <p>ഭക്തജനങ്ങളുടെ ഇച്ഛാനുസരണം നടത്താറുള്ള കൊറ്റൻ നിവേദ്യം, ഇടിച്ചുപിഴിഞ്ഞ പായസം, പന്തിരു
-                        നാഴി തുടങ്ങിയ വഴിപാടുകൾക്ക് പുറമേ സ്ത്രീസമൂഹം നാരങ്ങാവിളക്കും ചന്ദ്രപൊങ്കാലയും അഭംഗുരം നട
-                        ത്തിവരുന്നു. ഉത്സവകാലത്ത് പ്രധാന വഴിപാടാണ് അൻപൊലിപ്പറ. എന്നാൽ ഇതിനേക്കാളേറെ പ്രാധാന്യമു
-                        ള്ളതും ഐതീഹ്യവുമായി ബന്ധപ്പെട്ടതുമായ ആചാരമാണ് മീനം 10, 11 തീയതികളിൽ രാത്രിയിൽ നടക്കുന്ന ചമ
-                        യവിളക്ക്. അഭീഷ്‌ടകാര്യസിദ്ധിക്കായ് പുരുഷന്മാർ വ്രതാനുഷ്‌ഠാനത്തോടെ സ്ത്രീവേഷം ധരിച്ച് ചമയവിളക്കെ
-                        ടുക്കുന്നു. കിഴക്ക് കുഞ്ഞാലുംമൂട് മുതൽ ആറാട്ട്കടവ് വരെ വരിവരിയായി നിൽക്കുന്ന ആയിരക്കണക്കിന്
-                        ചയമവിളക്കുകൾക്ക് അനുഗ്രഹം ചൊരിയുന്നതിനായി ദേവി കുഞ്ഞാലുംമൂട്ടിൽനിന്നും എഴുന്നള്ളുന്നു. ദേവി
-                        യുടെ എഴുന്നള്ളത്ത് അവാച്യവും ഭക്തിനിർഭരവുമായ ആനന്ദാനുഭൂതിയാണ് ഭക്തജനങ്ങളിൽ ഉളവാക്കുന്നത്.</p>
-                        </p>
-                        <p>
-                          വിളക്കുകണ്ട് ആറാട്ട് കഴിഞ്ഞതിനുശേഷം കൽപ്പവൃക്ഷത്തിൻ്റെ സ്വർണ്ണവർണ്ണാഭമായ കുരുത്തോലയും
-                        കമുകും വാഴപ്പോളയും കൊണ്ട് ക്ഷേത്രമാതൃകയിൽ നിർമ്മിച്ച പന്തലിൽ ദേവി വിശ്രമിക്കുന്നു. ചവറ, പുതുക്കാ
-                        ട്, കുളങ്ങരഭാഗം, കോട്ടയ്ക്കകം എന്നീ നാലുകരകളുടെ നേതൃത്വത്തിൽ വരുന്ന എടുപ്പുകുതിരയുടെയും വാദ്യ
-                        ഘോഷങ്ങളുടെയും ഗജവീരന്മാരുടേയും വണ്ടിക്കുതിരകളുടേയും നിശ്ചല ദൃശ്യങ്ങളുടെയും സമന്വിതസമ്മേളന
-                        മായ കെട്ടുകാഴ്‌ച ഉത്സവത്തിൻ്റെ ഒരു പ്രധാന ഇനമാണ്.
-                        </p>
-
+<p>
+  ഭക്തജനങ്ങളുടെ ഇച്ഛാനുസരണം നടത്താറുള്ള കൊറ്റന്‍ നിവേദ്യം, ഇടിച്ചു പിഴിഞ്ഞ പായസം, പന്തിരുനാഴി തുടങ്ങിയ വഴിപാടുകള്‍ക്ക് പുറമേ സ്ത്രീ സമൂഹം നാരങ്ങാവിളക്കും ചന്ദ്രപൊങ്കാലയും അഭംഗുരം നടത്തിവരുന്നു. ഉത്സവകാലത്ത് പ്രധാന വഴിപാടാണ് അന്‍പൊലിപ്പറ. എന്നാല്‍ ഇതിനേക്കാ ളേറെ പ്രാധാന്യമുള്ളതും ഐതീഹ്യവുമായി ബന്ധപ്പെട്ടതുമായ ആചാരമാ ണ് മീനം 10, 11 തീയതികളില്‍ രാത്രിയില്‍ നടക്കുന്ന ചമയവിളക്ക്. അഭീഷ്ടകാര്യ സിദ്ധിക്കായ് പുരുഷന്മാര്‍ വ്രതാനുഷ്ഠാനത്തോടെ സ്ത്രീവേഷം ധരിച്ച് ചമയ വിളക്കെടുക്കുന്നു. കിഴക്ക് കുഞ്ഞാലുംമൂട് മുതല്‍ പടിഞ്ഞാറ് ആറാട്ട്കടവ് വരെ വരിവരിയായി നില്‍ക്കുന്ന ആയിരക്കണക്കിന് ചമയവിളക്കുകള്‍ക്ക് അനുഗ്രഹം ചൊരിയുന്നതിനായി ദേവി കുഞ്ഞാലുംമൂട്ടില്‍നിന്നും എഴുന്ന ള്ളുന്നു. ദേവിയുടെ എഴുന്നള്ളത്ത് അവാച്യവും ഭക്തിനിര്‍ഭരവുമായ ആന ന്ദാനുഭൂതിയാണ് ഭക്തജനങ്ങളില്‍ ഉളവാക്കുന്നത്. വിളക്കുകണ്ട@് ആറാട്ട് കഴിഞ്ഞതിനു ശേഷം കല്‍പ്പവൃക്ഷത്തിന്‍റെ സ്വര്‍ണ്ണവര്‍ണ്ണാഭമായ കുരു ത്തോലയും കമുകും വാഴപ്പോളയും കൊണ്ട@് ക്ഷേത്രമാതൃകയില്‍ നിര്‍മ്മിച്ച പന്തലില്‍ദേവി വിശ്രമിക്കുന്നു. ചവറ, പുതുക്കാട്, കുളങ്ങരഭാഗം, കോട്ടയ്ക്കകം എന്നീ നാലുകരകളുടെ നേതൃത്വത്തില്‍ വരുന്ന എടുപ്പുകുതിരയുടെയും വാദ്യഘോഷങ്ങളുടെയും ഗജവീരന്മാരുടേയും വണ്ട@ിക്കുതിരകളുടേയും നിശ്ചല ദൃശ്യങ്ങളുടെയും സമ-ന്വിതസമ്മേളനമായ കെട്ടുകാഴ്ച ഉത്സവത്തിന്‍റെ  പ്രധാന ഇനമാണ്.
+</p>
           {{!-- <div class="card-box-c foo">
             <div class="card-header-c d-flex">
               <div class="card-box-ico">
@@ -560,16 +285,186 @@
       </div>
     </div>
   </section>
-  <section class="image-section py-5">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Gallery with Zoom Effect</title>
+  <style>
+    /* Base styles */
+    .container {
+      padding: 20px;
+    }
+    
+    .image-item {
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 20px;
+      cursor: pointer;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+    
+    .image-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+    
+    .overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(0, 0, 0, 0.7);
+      overflow: hidden;
+      width: 100%;
+      height: 0;
+      transition: 0.5s ease;
+    }
+    
+    .image-item:hover .overlay {
+      height: 100px;
+    }
+    
+    .overlay-text {
+      color: white;
+      font-size: 16px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      width: 90%;
+    }
+    
+    .overlay-text h4 {
+      margin: 0 0 10px 0;
+    }
+    
+    .overlay-text p {
+      margin: 0;
+      font-size: 14px;
+    }
+    
+    /* Modal styles for zoom effect */
+   .modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.9);
+  /* Added flex properties for centering */
+  display: none; /* Will be changed to flex when opened */
+  align-items: center;
+  justify-content: center;
 
-              <h2 class="title-a" style="text-align: center;">പുതിയ ചിത്രങ്ങൾ</h2>
-              <br>
+}
 
+.modal-content {
+  margin: auto;
+  display: block;
+  max-width: 50%;
+  max-height: 100%;
+  /* Remove any top margin that might offset centering */
+  position: relative;
+  animation: zoom 0.6s;
+  top: 40;
+
+}
+
+/* Update the script to use flex when showing the modal */
+    
+    .modal-content {
+      animation: zoom 0.6s;
+    }
+    
+    @keyframes zoom {
+      from {transform: scale(0)}
+      to {transform: scale(1)}
+    }
+    
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    
+    .close:hover,
+    .close:focus {
+      color: #bbb;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    
+    .caption {
+      margin: auto;
+      display: block;
+      width: 80%;
+      max-width: 700px;
+      text-align: center;
+      color: #ccc;
+      padding: 10px 0;
+      height: 150px;
+    }
+    
+    /* Responsive layout */
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 -15px;
+    }
+    
+    .col-lg-4, .col-md-6, .col-sm-12 {
+      padding: 0 15px;
+      box-sizing: border-box;
+    }
+    
+    @media (min-width: 992px) {
+      .col-lg-4 {
+        flex: 0 0 33.333333%;
+        max-width: 33.333333%;
+      }
+    }
+    
+    @media (min-width: 768px) and (max-width: 991.98px) {
+      .col-md-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+      }
+    }
+    
+    @media (max-width: 767.98px) {
+      .col-sm-12 {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+      
+      .modal-content {
+        max-width: 95%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<section>
   <div class="container">
     <div class="row">
-      <div class="col-lg-4 col-md-6 col-sm-12 mb-4" >
-        <div class="image-item" >
-          <img src="img/Committee .jpg" class="img-fluid" alt="Image 1">
+      <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+        <div class="image-item">
+          <img src="img/Committee .jpg" class="img-fluid" alt="Committee Members">
           <div class="overlay">
             <div class="overlay-text">
               <h4>Committee Members</h4>
@@ -581,7 +476,7 @@
 
       <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
         <div class="image-item">
-          <img src="img/Vazhipadu.jpg" class="img-fluid" alt="Image 2">
+          <img src="img/Vazhipadu.jpg" class="img-fluid" alt="Special Days">
           <div class="overlay">
             <div class="overlay-text">
               <h4>Day</h4>
@@ -593,7 +488,7 @@
 
       <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
         <div class="image-item">
-          <img src="img/Cover Page.jpg" class="img-fluid" alt="Image 3">
+          <img src="img/Cover Page.jpg" class="img-fluid" alt="Cover Page">
           <div class="overlay">
             <div class="overlay-text">
               <h4>Image 3 Title</h4>
@@ -607,6 +502,52 @@
     </div>
   </div>
 </section>
+
+<!-- Modal for zoomed image -->
+<div id="imageModal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="modalImg">
+  <div id="caption" class="caption"></div>
+</div>
+
+<script>
+  // Get the modal
+  const modal = document.getElementById("imageModal");
+  const modalImg = document.getElementById("modalImg");
+  const captionText = document.getElementById("caption");
+  const closeBtn = document.getElementsByClassName("close")[0];
+  
+  // Get all images with class img-fluid
+  const images = document.querySelectorAll(".image-item img");
+  
+  // Add click event to each image
+  images.forEach(img => {
+    img.addEventListener("click", function() {
+      modal.style.display = "block";
+      modalImg.src = this.src;
+      
+      // Get the title from the nearest h4 element
+      const title = this.closest('.image-item').querySelector('h4')?.textContent || '';
+      const desc = this.closest('.image-item').querySelector('p')?.textContent || '';
+      captionText.innerHTML = `<h3>${title}</h3><p>${desc}</p>`;
+    });
+  });
+  
+  // Close the modal when clicking the × button
+  closeBtn.addEventListener("click", function() {
+    modal.style.display = "none";
+  });
+  
+  // Close the modal when clicking outside the image
+  modal.addEventListener("click", function(event) {
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  });
+</script>
+
+</body>
+</html>
 
   <!--/ Services End /-->
 
@@ -637,16 +578,16 @@
               <div class="card-overlay-a-content">
                 <div class="card-header-a">
                   <h2 class="card-title-a">
-                    <a href="property-single.html">
-                      <br /> {{description}}</a>
+                    {{!-- <a href="property-single.html"> --}}
+                      {{!-- <br /> {{description}}</a> --}}
                   </h2>
                 </div>
                 <div class="card-body-a">
                   <div class="price-box d-flex">
-                    <span class="price-a">Newly Made</span>
+                    <span class="price-a">Committee</span>
                   </div>
                   {{!-- <a href="#" class="link-a">Click here to view --}}
-                    <span class="ion-ios-arrow-forward"></span>
+                    {{!-- <span class="ion-ios-arrow-forward"></span> --}}
                   </a>
                 </div>
               </div>
@@ -654,6 +595,8 @@
           </div>
         </div>
         {{/each}}
+
+        
         {{!-- <div class="carousel-item-b">
           <div class="card-box-a card-shadow">
             <div class="img-box-a">

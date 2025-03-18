@@ -34,9 +34,12 @@ router.get('/interior', async(req,res)=>{
     console.log("interior-----------")
     let Genaral =await NotificationModel.find({category:'Genaral'})
     let Special =await NotificationModel.find({category:'Special'})
-
-    console.log(Genaral,Special,"data from interiour")
-    res.render('user/property-grid',{Genaral,Special})
+    // let Genaral =await NotificationModel.find({category:'Genaral'})
+    // let Special =await NotificationModel.find({category:'Special'})
+    let previousWorks =  await fileModel.find({category:'Committee'})
+    let Interior = await fileModel.find({category:'celebrations'})
+    console.log(Genaral,Special,previousWorks,"data from interiour")
+    res.render('user/property-grid',{Special,Genaral,previousWorks,Interior})
   } catch (error) {
     console.log(error)
     res.redirect('/')

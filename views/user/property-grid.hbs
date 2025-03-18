@@ -1,363 +1,500 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>SA Constructions</title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta content="" name="keywords">
-  <meta content="" name="description">
-
-  <!-- Favicons -->
-  <link href="img/favicon.png" rel="icon">
-  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
-
-  <!-- Bootstrap CSS File -->
-  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Libraries CSS Files -->
-  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="lib/animate/animate.min.css" rel="stylesheet">
-  <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-
-  <!-- Main Stylesheet File -->
-  <link href="css/style.css" rel="stylesheet">
-
-  <!-- =======================================================
-    Theme Name: EstateAgency
-    Theme URL: https://bootstrapmade.com/real-estate-agency-bootstrap-template/
-    Author: BootstrapMade.com
-    License: https://bootstrapmade.com/license/
-  ======================================================= -->
-</head>
-
-<body>
-
-  <div class="click-closed"></div>
-  <!--/ Form Search Star /-->
-  <div class="box-collapse">
-    <div class="title-box-d">
-      {{!-- <h3 class="title-d">Search Property</h3> --}}
-    </div>
-    <span class="close-box-collapse right-boxed ion-ios-close"></span>
-    <div class="box-collapse-wrap form">
-      <form class="form-a">
-        <div class="row">
-          <div class="col-md-12 mb-2">
-            <div class="form-group">
-              <label for="Type">Keyword</label>
-              <input type="text" class="form-control form-control-lg form-control-a" placeholder="Keyword">
-            </div>
-          </div>
-          <div class="col-md-6 mb-2">
-            <div class="form-group">
-              <label for="Type">Type</label>
-              <select class="form-control form-control-lg form-control-a" id="Type">
-                <option>All Type</option>
-                <option>For Rent</option>
-                <option>For Sale</option>
-                <option>Open House</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-md-6 mb-2">
-            <div class="form-group">
-              <label for="city">City</label>
-              <select class="form-control form-control-lg form-control-a" id="city">
-                <option>All City</option>
-                <option>Alabama</option>
-                <option>Arizona</option>
-                <option>California</option>
-                <option>Colorado</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-md-6 mb-2">
-            <div class="form-group">
-              <label for="bedrooms">Bedrooms</label>
-              <select class="form-control form-control-lg form-control-a" id="bedrooms">
-                <option>Any</option>
-                <option>01</option>
-                <option>02</option>
-                <option>03</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-md-6 mb-2">
-            <div class="form-group">
-              <label for="garages">Garages</label>
-              <select class="form-control form-control-lg form-control-a" id="garages">
-                <option>Any</option>
-                <option>01</option>
-                <option>02</option>
-                <option>03</option>
-                <option>04</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-md-6 mb-2">
-            <div class="form-group">
-              <label for="bathrooms">Bathrooms</label>
-              <select class="form-control form-control-lg form-control-a" id="bathrooms">
-                <option>Any</option>
-                <option>01</option>
-                <option>02</option>
-                <option>03</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-md-6 mb-2">
-            <div class="form-group">
-              <label for="price">Min Price</label>
-              <select class="form-control form-control-lg form-control-a" id="price">
-                <option>Unlimite</option>
-                <option>$50,000</option>
-                <option>$100,000</option>
-                <option>$150,000</option>
-                <option>$200,000</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-md-12">
-            <button type="submit" class="btn btn-b">Search Property</button>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-  <style>
-    /* Style for the announcement section */
-.announcement {
-  background-color: ; /* Light red background */
-  padding: 10px;
-  text-align: center;
-  border-radius: 5px;
-  margin: 10px 0;
-}
-
-.announcement-text {
-  font-size: 18px;
-  font-weight: bold;
-  color: red;
-  font-size: 1.8rem;
-  margin: 0;
-}
-
-/* Make the text responsive */
-@media (max-width: 768px) {
-  .announcement-text {
-    font-size: 16px;
-  }
-}
-
-@media (max-width: 480px) {
-  .announcement-text {
-    font-size: 14px;
-  }
-}
-
-  </style>
-  <!--/ Form Search End /-->
-
-  <!--/ Nav Star /-->
-  <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
-    <div class="container">
-      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
-        aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-       <span class="color-b">ശ്രീ </span> കൊറ്റൻകുളങ്ങര
-                     ദേവീക്ഷേത്രം</h1>
-      {{!-- <button type="button" class="btn btn-link nav-search navbar-toggle-box-collapse d-md-none" data-toggle="collapse"
-        data-target="#navbarTogglerDemo01" aria-expanded="false">
-        <span class="fa fa-search" aria-hidden="true"></span>
-      </button> --}}
-      <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="/">ഉള്ളടക്കം</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/about">ആചാരങ്ങൾ</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="/interior">അറിയിപ്പുകൾ</a>
-          </li>
+       
+        <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f8fff8;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Banner Carousel styles */
+        .carousel {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 500px;
+        }
+        
+        .carousel-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .carousel-item {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .carousel-item.active {
+            opacity: 1;
+        }
+        
+        .carousel-caption {
+            text-align: center;
+            max-width: 800px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            color: white;
+        }
+        
+        .carousel-caption h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .carousel-caption p {
+            font-size: 1.2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        .carousel-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .carousel-dot.active {
+            background-color: white;
+        }
+        
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            z-index: 10;
+        }
+        
+        .carousel-arrow:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        
+        .carousel-prev {
+            left: 20px;
+        }
+        
+        .carousel-next {
+            right: 20px;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: #1a6d30;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #e0ffe0;
+        }
+        
+        /* Main content */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            margin-bottom: 60px;
+        }
+        
+        section h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            color: #1a6d30;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        section h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: #66a66f;
+        }
+        
+        /* About section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: left;
+        }
+        
+        .about-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
          
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .about-text p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        /* Photo gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            cursor: pointer;
+            border: 2px solid #1a6d30;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        /* Committee members */
+        .committee {
+            text-align: center;
+        }
+        
+        .committee-members {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .member {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            border: 2px solid #1a6d30;
+        }
+        
+        .member:hover {
+            transform: translateY(-5px);
+        }
+        
+        .member img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .member-info {
+            padding: 15px;
+            background-color: #f0fff0;
+        }
+        
+        .member-info h3 {
+            margin-bottom: 5px;
+            color: #1a6d30;
+        }
+        
+        .member-info p {
+            color: #555;
+            font-size: 0.9rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #1a6d30;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 15px;
+            color: #e0ffe0;
+        }
+        
+        .footer-section p, .footer-section a {
+            color: #e0ffe0;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+        }
+        
+        .footer-section a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        .copyright {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Button styles */
+        .btn {
+            display: inline-block;
+            background-color: #1a6d30;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+        
+        .btn:hover {
+            background-color: #2c8e45;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul li {
+                margin: 5px 0;
+            }
+            
+            .carousel-caption h2 {
+                font-size: 2rem;
+            }
+            
+            .carousel-caption p {
+                font-size: 1rem;
+            }
+            
+            .carousel {
+                height: 400px;
+            }
+        }
+         .download-container {
+            text-align: center;
+            padding: 30px;
+          
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .download-button {
+            display: inline-block;
+            background-color: #9c6644;
+            color: white;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .download-button:hover {
+            background-color: #7d5236;
+        }
+        
+        .download-icon {
+            margin-right: 8px;
+        }
+            body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            min-height: 200vh; /* Make page scrollable for demo */
+            background-color: #f0f0f0;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .social-icons {
+            position: fixed;
+            left: 20px;
+            bottom: 20px;
+            z-index: 1000; /* Ensure icons appear above other content */
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-icon:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .facebook {
+            background: linear-gradient(45deg, #3b5998, #4c70ba);
+        }
+
+        .instagram {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        }
+
+        .social-icon svg {
+            width: 30px;
+            height: 30px;
+            fill: white;
+        }
+
+        /* Animation for attention */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .social-icons:hover .social-icon:not(:hover) {
+            opacity: 0.7;
+        }
+
+        /* Initial animation */
+        .social-icon {
+            animation: pulse 2s infinite;
+            animation-delay: 0.5s;
+        }
+
+        .social-icon:hover {
+            animation: none;
+        }
+
+        .facebook {
+            animation-delay: 0.7s;
+        }
+    </style> <!-- Photo Gallery Section -->
+
+     <nav>
+        <ul>
+            {{!-- <li><a href="#">Home</a></li> --}}
+            <li><a href="/">ആചാരങ്ങൾ</a></li>
+            <li><a href="#notification">അറിയിപ്പുകള്‍</a></li>
+            <li><a href="#gallary">ചിത്രങ്ങൾ</a></li>
+            <li><a href="#committee">കമ്മിറ്റി</a></li>
+            {{!-- <li><a href="#">Donations</a></li> --}}
+            {{!-- <li><a href="#">Contact</a></li> --}}
         </ul>
-      </div>
-      {{!-- <button type="button" class="btn btn-b-n navbar-toggle-box-collapse d-none d-md-block" data-toggle="collapse"
-        data-target="#navbarTogglerDemo01" aria-expanded="false">
-        <span class="fa fa-search" aria-hidden="true"></span>
-      </button> --}}
-    </div>
-  </nav>
-  <!--/ Nav End /-->
-
-  <!--/ Intro Single star /-->
-<section class="intro-single">
-  <!-- Announcement Section -->
-  <div class="announcement">
-    {{#each Genaral}}
-      <p class="announcement-text">{{this.notifications}}</p>
-      <br>
-    {{/each}}
-  </div>
-  <div class="announcement">
-    {{#each Special}}
-    <marquee behavior="" direction=""><p class="announcement-text">🚨 {{this.notifications}} 🚨</p></marquee>
-      
-      <br>
-    {{/each}}
-  </div>
-</section>
-
-
-
-  <!--/ Property Grid End /-->
-
-  <!--/ footer Star /-->
-  <section class="section-footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12 col-md-4">
-          <div class="widget-a">
-            <div class="w-header-a">
-              <h3 class="w-title-a text-brand">Kottankulangara</h3>
-            </div>
-            <div class="w-body-a">
-              <p class="w-text-a color-text-a">
-               Chavara
-               Kollam
-               kerala
-              </p>
-            </div>
-            <div class="w-footer-a">
-              <ul class="list-unstyled">
-                <li class="color-a">
-                  <span class="color-text-a">Phone .</span> +91 </li>
-                <li class="color-a">
-                  <span class="color-text-a">Email .</span> saconstructions9@gmaile.com</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-12 col-md-4 section-md-t3">
-          <div class="widget-a">
-            <div class="w-header-a">
-              <h3 class="w-title-a text-brand">The Company</h3>
-            </div>
-            <div class="w-body-a">
-              <div class="w-body-a">
-                <ul class="list-unstyled">
-                  <li class="item-list-a">
-                    <i class="fa fa-angle-right"></i> <a href="#">Site Map</a>
-                  </li>
-                 
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <nav class="nav-footer">
-            <ul class="list-inline">
-              <li class="list-inline-item">
-                <a href="#">Home</a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">About</a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">Property</a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">Blog</a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">Contact</a>
-              </li>
-            </ul>
-          </nav>
-          <div class="socials-a">
-            <ul class="list-inline">
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fa fa-facebook" aria-hidden="true"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fa fa-twitter" aria-hidden="true"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fa fa-instagram" aria-hidden="true"></i>
-                </a>
-              </li>
-              {{!-- <li class="list-inline-item">
-                <a href="#">
-                  <i class="fa fa-pinterest-p" aria-hidden="true"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fa fa-dribbble" aria-hidden="true"></i>
-                </a>
-              </li> --}}
-            </ul>
-          </div>
-          <div class="copyright-footer">
-            <p class="copyright color-text-a">
-              &copy; Copyright
-              <span class="color-a">KOttanKulangara</span> All Rights Reserved.
-            </p>
-          </div>
-          <div class="credits">
-            <!--
-              All the links in the footer should remain intact.
-              You can delete the links only if you purchased the pro version.
-              Licensing information: https://bootstrapmade.com/license/
-              Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=EstateAgency
-            -->
-            Designed by <a href="https://byteboot.in/">Byteboot</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
-  <!--/ Footer End /-->
-
-  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-  <div id="preloader"></div>
-
-  <!-- JavaScript Libraries -->
-  <script src="lib/jquery/jquery.min.js"></script>
-  <script src="lib/jquery/jquery-migrate.min.js"></script>
-  <script src="lib/popper/popper.min.js"></script>
-  <script src="lib/bootstrap/js/bootstrap.min.js"></script>
-  <script src="lib/easing/easing.min.js"></script>
-  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-  <script src="lib/scrollreveal/scrollreveal.min.js"></script>
-  <!-- Contact Form JavaScript File -->
-  <script src="contactform/contactform.js"></script>
-
-  <!-- Template Main Javascript File -->
-  <script src="js/main.js"></script>
-
-</body>
-</html>
+    </nav>
+        <section id="gallary" class="container" >
+            <h2>Photo Gallery</h2>
+            <div class="gallery">
+                {{#each Interior}}
+                <div class="gallery-item">
+                    <img src="images/uploadIMG/{{_id}}.jpg" alt="Temple Main Entrance">
+                </div>
+                {{/each}}
+                
+        </section>

@@ -1,1451 +1,919 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>EstateAgency Bootstrap Template</title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta content="" name="keywords">
-  <meta content="" name="description">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temple Homepage</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f8fff8;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Banner Carousel styles */
+        .carousel {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 500px;
+        }
+        
+        .carousel-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .carousel-item {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .carousel-item.active {
+            opacity: 1;
+        }
+        
+        .carousel-caption {
+            text-align: center;
+            max-width: 800px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            color: white;
+        }
+        
+        .carousel-caption h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .carousel-caption p {
+            font-size: 1.2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        .carousel-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .carousel-dot.active {
+            background-color: white;
+        }
+        
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            z-index: 10;
+        }
+        
+        .carousel-arrow:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        
+        .carousel-prev {
+            left: 20px;
+        }
+        
+        .carousel-next {
+            right: 20px;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: #1a6d30;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #e0ffe0;
+        }
+        
+        /* Main content */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            margin-bottom: 60px;
+        }
+        
+        section h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            color: #1a6d30;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        section h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: #66a66f;
+        }
+        
+        /* About section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: left;
+        }
+        
+        .about-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+         
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .about-text p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        /* Photo gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            cursor: pointer;
+            border: 2px solid #1a6d30;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        /* Committee members */
+        .committee {
+            text-align: center;
+        }
+        
+        .committee-members {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .member {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            border: 2px solid #1a6d30;
+        }
+        
+        .member:hover {
+            transform: translateY(-5px);
+        }
+        
+        .member img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .member-info {
+            padding: 15px;
+            background-color: #f0fff0;
+        }
+        
+        .member-info h3 {
+            margin-bottom: 5px;
+            color: #1a6d30;
+        }
+        
+        .member-info p {
+            color: #555;
+            font-size: 0.9rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #1a6d30;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 15px;
+            color: #e0ffe0;
+        }
+        
+        .footer-section p, .footer-section a {
+            color: #e0ffe0;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+        }
+        
+        .footer-section a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        .copyright {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Button styles */
+        .btn {
+            display: inline-block;
+            background-color: #1a6d30;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+        
+        .btn:hover {
+            background-color: #2c8e45;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul li {
+                margin: 5px 0;
+            }
+            
+            .carousel-caption h2 {
+                font-size: 2rem;
+            }
+            
+            .carousel-caption p {
+                font-size: 1rem;
+            }
+            
+            .carousel {
+                height: 400px;
+            }
+        }
+         .download-container {
+            text-align: center;
+            padding: 30px;
+          
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .download-button {
+            display: inline-block;
+            background-color: #9c6644;
+            color: white;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .download-button:hover {
+            background-color: #7d5236;
+        }
+        
+        .download-icon {
+            margin-right: 8px;
+        }
+            body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            min-height: 200vh; /* Make page scrollable for demo */
+            background-color: #f0f0f0;
+        }
 
-  <!-- Favicons -->
-  <link href="img/favicon.png" rel="icon">
-  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+        .content {
+            padding: 20px;
+        }
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+        .social-icons {
+            position: fixed;
+            left: 20px;
+            bottom: 20px;
+            z-index: 1000; /* Ensure icons appear above other content */
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
 
-  <!-- Bootstrap CSS File -->
-  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
 
-  <!-- Libraries CSS Files -->
-  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="lib/animate/animate.min.css" rel="stylesheet">
-  <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+        .social-icon:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
 
-  <!-- Main Stylesheet File -->
-  <link href="css/style.css" rel="stylesheet">
-  <style>
-    .logo{
-      
-      width: 250px;
-    }
+        .facebook {
+            background: linear-gradient(45deg, #3b5998, #4c70ba);
+        }
+
+        .instagram {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        }
+
+        .social-icon svg {
+            width: 30px;
+            height: 30px;
+            fill: white;
+        }
+
+        /* Animation for attention */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .social-icons:hover .social-icon:not(:hover) {
+            opacity: 0.7;
+        }
+
+        /* Initial animation */
+        .social-icon {
+            animation: pulse 2s infinite;
+            animation-delay: 0.5s;
+        }
+
+        .social-icon:hover {
+            animation: none;
+        }
+
+        .facebook {
+            animation-delay: 0.7s;
+        }
     </style>
-<nav class="navbar navbar-default navbar-trans fixed-top navbar-expand-lg">
-  <div class="container">
-    <!-- Navbar toggler (hamburger icon) -->
-    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
-      aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-
-    <a href="" class="navbar-brand">ശ്രീ കൊറ്റൻകുളങ്ങര ദേവീക്ഷേത്രം</a>
-
- 
-    <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" href="/">ഉള്ളടക്കം</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/about">ആചാരങ്ങൾ</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/interior">അറിയിപ്പുകൾ</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-<style>
-  /* CSS for navbar height and scroll behavior */
-  .navbar {
-    min-height: 60px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  /* Class to hide navbar when scrolling down */
-  .navbar-hidden {
-    transform: translateY(-100%);
-  }
-  
-  /* Add some space at the top of the page to prevent content from being hidden under the navbar */
-  body {
-    padding-top: 80px;
-  }
-</style>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    let lastScrollTop = 0;
-    const navbar = document.querySelector('.navbar');
-    const scrollThreshold = 10; // Minimum amount of scroll before triggering hide/show
-    
-    window.addEventListener('scroll', function() {
-      let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-      
-      // Determine scroll direction
-      if (Math.abs(lastScrollTop - currentScroll) <= scrollThreshold) {
-        return; // Don't do anything if the scroll amount is minimal
-      }
-      
-      // Scrolling down and not at the top of the page
-      if (currentScroll > lastScrollTop && currentScroll > navbar.offsetHeight) {
-        navbar.classList.add('navbar-hidden');
-      } 
-      // Scrolling up
-      else {
-        navbar.classList.remove('navbar-hidden');
-      }
-      
-      lastScrollTop = currentScroll;
-    });
-  });
-</script>
-  <!--/ Nav End /-->
-
-  <!--/ Carousel Star /-->
-  <div class="intro intro-carousel">
-    <div id="carousel" class="owl-carousel owl-theme">
-        <!-- Notification Marquee -->
-        {{!-- {{#if General.length}} <!-- Check if there are General notifications -->
-            <div class="notification-marquee">
-                <marquee behavior="scroll" direction="left" class="notification-text">
-                    {{#each General}} <!-- Loop through General notifications -->
-                        <span class="notification-item">{{this.notifications}}</span>&nbsp;&nbsp;&nbsp;&nbsp;
-                    {{/each}}
-
-                    {{#each Special}} <!-- Loop through Special notifications -->
-                        <span class="notification-item">{{this.notifications}}</span>&nbsp;&nbsp;&nbsp;&nbsp;
-                    {{/each}}
-                </marquee>
-            </div>
-        {{/if}} --}}
-
-        <!-- First carousel item -->
-        <div class="carousel-item-a intro-item bg-image" style="background-image: url('img/banner001.png">
-            <div class="overlay overlay-a"></div>
-            <div class="intro-content display-table">
-                <div class="table-cell">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-8">
-                                <div class="intro-body">
-                                    <p class="intro-title-top"><br> 78345</p>
-                                    <h1 class="intro-title mb-4">
-                                        <!-- Title -->
-                                    </h1>
-                                    <p class="intro-subtitle intro-price" style="margin-top: 300px;">
-                                        <a href="//api.whatsapp.com/send?phone=+91 9495238787&text=Hai SA constructions..." class="btn btn-sussess">
-                                            <span class="price-a" >whatsApp Us</span>
-                                         <a href="images/book/bookLet.pdf" class="btn btn-success" download>Download Book</a>
-
-                                        </a>
-                                    </p>
-                                    <div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Second carousel item -->
-        <div class="carousel-item-a intro-item bg-image" style="background-image: url('img/banr2.png')">
-            <div class="overlay overlay-a"></div>
-            <div class="intro-content display-table">
-                <div class="table-cell">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-4">
-                                <div class="intro-body">
-                                    <p class="intro-title-top"></p>
-                                    <h1 class="intro-title mb-2"></h1>
-                                    <p class="intro-subtitle intro-price">
-                                        <a href="//api.whatsapp.com/send?phone=+91 9495238787&text=Hai SA constructions...">
-                                            <span class="price-a">whatsApp Us</span>
-                                        </a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-         <div class="carousel-item-a intro-item bg-image" style="background-image: url('img/banner002.png')">
-            <div class="overlay overlay-a"></div>
-            <div class="intro-content display-table">
-                <div class="table-cell">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-4">
-                                <div class="intro-body">
-                                    <p class="intro-title-top"></p>
-                                    <h1 class="intro-title mb-2"></h1>
-                                    <p class="intro-subtitle intro-price">
-                                        <a href="//api.whatsapp.com/send?phone=+91 9495238787&text=Hai SA constructions...">
-                                            <span class="price-a">whatsApp Us</span>
-                                        </a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<!-- CSS Styles -->
-<style>
-  /* Default background for larger screens */
-  .carousel-item-a.bg-image {
-    background-image: url('img/banner.jpg');
-  }
-
-  /* Mobile screen adjustments */
-  @media (max-width: 567px) {
-    .carousel-item-a.bg-image {
-      background-image: url('img/banner-Res.jpg'); /* Change this to your mobile banner image */
-    }
-  }
-</style>
-
-  <!--/ Carousel end /-->
-
-  <!--/ Services Star /-->
-  <section class="section-services section-t8" id="services">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="title-wrap d-flex justify-content-between">
-            <div class="title-box">
-              <h2 class="title-a" style="color: red;">ക്ഷേത്രോൽപ്പത്തി ഐതീഹ്യം</h2>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="p-2">
-          <p>ഭക്തസഹസ്രങ്ങള്‍ക്ക് അഭയവും ആശ്വാസവുമരുളുന്ന  സ്വയംഭൂവായ വീരഭട്ടാരിക വാഴുന്ന പുണ്യപുരാതന ക്ഷേത്രമാണ് ചവറ മേജര്‍ ശ്രീ കൊറ്റന്‍ കുളങ്ങര ദേവിക്ഷേത്രം. തിരുവിതാംകൂര്‍ദേവസ്വം ബോര്‍ഡിന്‍റെ കീഴിലുള്ള   മേജര്‍ ക്ഷേത്രങ്ങളിലൊന്നായ ഈ ക്ഷേത്രത്തിന്‍റെ പേരില്‍തന്നെ ആത്മീയത യുടെ പരിപാവനത്വം തുളുമ്പി നില്‍ക്കുന്നു. ക്ഷേത്രം സ്ഥിതിചെയ്യുന്ന സ്ഥലം പുരാതനകാലത്ത് കാടും പടലും ഇടതൂര്‍ന്ന് വളര്‍ന്നിരുന്ന സ്ഥലമായിരുന്നു. ഇപ്പോഴത്തെ ക്ഷേത്രാങ്കണത്തിന്‍റെ വടക്കു പടിഞ്ഞാറേ മൂലയ്ക്ക് ഭൂതക്കുളം എന്നറിയപ്പെട്ടിരുന്ന ചെറിയകുളവും ഇന്ന് കാണുന്ന ക്ഷേത്രക്കുളത്തിന്‍റെ സ്ഥാനത്ത് വിസ്തൃതമായ ചിറയും. വര്‍ഷ കാലങ്ങളില്‍ ഇവരണ്ടും കരകവിഞ്ഞ് സമീപത്തുള്ള പാടങ്ങളിലേക്ക് ഒഴുകുന്നു. പുല്ലും വെള്ളവും സുലഭമായ ഈ പ്രദേശത്ത് സമീപവാസികളായ കുട്ടികള്‍ കാലികളെ മേയ്ക്കാന്‍ ഇടം കണ്ടെത്തി. ഒരു ദിവസം അടര്‍ന്നു വീണുകിട്ടിയ നാളീകേരം ഭൂതക്കുളത്തിന് തെക്കുകിഴക്ക് ഉയര്‍ന്നുനിന്നിരുന്ന കല്ലില്‍വച്ച് തൊണ്ട് നീക്കം ചെയ്യാന്‍ ശ്രമിക്കവെ നാളീകേരം കല്ലില്‍ തട്ടിയപ്പോള്‍ ശിലയില്‍നിന്ന് നിണം വാര്‍ന്നുവന്നു. പരിഭ്രാന്തരായ അവര്‍ വീടുകളിലെ മുതിര്‍ന്നവരെ വിവരംധരിപ്പിച്ചു. നാട്ടുപ്രമാണിമാരുടെ നേതൃത്വത്തില്‍ പ്രശ്നംവയ്പ്പിച്ച് നോക്കിയപ്പോള്‍ ശിലയില്‍ വീരഭട്ടാരിക കുടികൊള്ളുന്നുവെന്നും നാടിന്‍റെ യും നാട്ടുകാരുടെയും ഐശ്വര്യത്തിന് വേണ്ട ക്ഷേത്രം നിര്‍മ്മിച്ച് പൂജാദി കര്‍മ്മങ്ങള്‍ നിര്‍വ്വഹിക്കണമെന്നും കാണാന്‍ കഴിഞ്ഞു. അന്നേദിവസം മുതല്‍ നാളീകേരം ഇടിച്ചുപിഴിഞ്ഞെടുത്ത കൊറ്റന്‍ ദേവിക്ക് നിവേദ്യമായി നല്‍കിവരുന്നു. കുമാരന്മാര്‍ ബാലികമാരായി വേഷമണിഞ്ഞ് ദേവിയുടെ മുന്നില്‍ വിളക്കെടുത്തു. ദിവ്യശിലയ്ക്ക് ചുറ്റും കുരുത്തോലപ്പന്തല്‍ കെട്ടിവിളക്കുവച്ചു. കുളക്കരയിലെ സ്വയംഭൂവായ വീരഭട്ടാരികയുടെ ക്ഷേത്രം പിന്നീട് കൊറ്റന്‍കുളങ്ങര ക്ഷേത്രമായി അറിയപ്പെട്ടു. വായുമണ്ഡലം മേല്‍ക്കൂരയായി സങ്കല്‍പ്പിക്കണമെന്നും മേല്‍ക്കൂര പാടില്ലെന്നും ദേവപ്രശ്നവിധി ഉണ്ടായതിനാല്‍ താന്ത്രികവിധി പ്രകാരം നിര്‍മ്മിച്ച മേല്‍ക്കൂരയില്ലാത്ത ശ്രീകോവിലില്‍ ഋതുദേദങ്ങളെല്ലാം തന്നിലാവാഹിച്ച് ശക്തിസ്വരൂപിണിയും എന്നാല്‍ വാത്സല്യനിധിയുമായ ദേവി തന്‍റെ ഭക്തരില്‍ കാരുണ്യാമൃതവര്‍ഷം ചൊരിഞ്ഞ് ഇവിടെ വാണരുളുന്നു. വീരഭട്ടാരികയെ കൂടാതെ ശ്രീ പരമേശ്വരന്‍, ശ്രീമഹാഗണപതി, ശ്രീധര്‍മ്മശാസ്താവ്, യക്ഷിയമ്മ, മാടന്‍ഭഗവാന്‍, നാഗരാജാവ് എന്നിവര്‍ ഉപദേവതമാരായിട്ടുണ്ട്.
-</p>
-
-<p>
-  ഭക്തജനങ്ങളുടെ ഇച്ഛാനുസരണം നടത്താറുള്ള കൊറ്റന്‍ നിവേദ്യം, ഇടിച്ചു പിഴിഞ്ഞ പായസം, പന്തിരുനാഴി തുടങ്ങിയ വഴിപാടുകള്‍ക്ക് പുറമേ സ്ത്രീ സമൂഹം നാരങ്ങാവിളക്കും ചന്ദ്രപൊങ്കാലയും അഭംഗുരം നടത്തിവരുന്നു. ഉത്സവകാലത്ത് പ്രധാന വഴിപാടാണ് അന്‍പൊലിപ്പറ. എന്നാല്‍ ഇതിനേക്കാ ളേറെ പ്രാധാന്യമുള്ളതും ഐതീഹ്യവുമായി ബന്ധപ്പെട്ടതുമായ ആചാരമാ ണ് മീനം 10, 11 തീയതികളില്‍ രാത്രിയില്‍ നടക്കുന്ന ചമയവിളക്ക്. അഭീഷ്ടകാര്യ സിദ്ധിക്കായ് പുരുഷന്മാര്‍ വ്രതാനുഷ്ഠാനത്തോടെ സ്ത്രീവേഷം ധരിച്ച് ചമയ വിളക്കെടുക്കുന്നു. കിഴക്ക് കുഞ്ഞാലുംമൂട് മുതല്‍ പടിഞ്ഞാറ് ആറാട്ട്കടവ് വരെ വരിവരിയായി നില്‍ക്കുന്ന ആയിരക്കണക്കിന് ചമയവിളക്കുകള്‍ക്ക് അനുഗ്രഹം ചൊരിയുന്നതിനായി ദേവി കുഞ്ഞാലുംമൂട്ടില്‍നിന്നും എഴുന്ന ള്ളുന്നു. ദേവിയുടെ എഴുന്നള്ളത്ത് അവാച്യവും ഭക്തിനിര്‍ഭരവുമായ ആന ന്ദാനുഭൂതിയാണ് ഭക്തജനങ്ങളില്‍ ഉളവാക്കുന്നത്. വിളക്കുകണ്ട@് ആറാട്ട് കഴിഞ്ഞതിനു ശേഷം കല്‍പ്പവൃക്ഷത്തിന്‍റെ സ്വര്‍ണ്ണവര്‍ണ്ണാഭമായ കുരു ത്തോലയും കമുകും വാഴപ്പോളയും കൊണ്ട@് ക്ഷേത്രമാതൃകയില്‍ നിര്‍മ്മിച്ച പന്തലില്‍ദേവി വിശ്രമിക്കുന്നു. ചവറ, പുതുക്കാട്, കുളങ്ങരഭാഗം, കോട്ടയ്ക്കകം എന്നീ നാലുകരകളുടെ നേതൃത്വത്തില്‍ വരുന്ന എടുപ്പുകുതിരയുടെയും വാദ്യഘോഷങ്ങളുടെയും ഗജവീരന്മാരുടേയും വണ്ട@ിക്കുതിരകളുടേയും നിശ്ചല ദൃശ്യങ്ങളുടെയും സമ-ന്വിതസമ്മേളനമായ കെട്ടുകാഴ്ച ഉത്സവത്തിന്‍റെ  പ്രധാന ഇനമാണ്.
-</p>
-          {{!-- <div class="card-box-c foo">
-            <div class="card-header-c d-flex">
-              <div class="card-box-ico">
-                <span class="fa fa-gamepad"></span>
-              </div>
-              <div class="card-title-c align-self-center">
-                <h2 class="title-c"></h2>
-              </div>
-            </div>
-            <div class="card-body-c">
-              <p class="content-c">
-               We serve our customers at every project phase, from strategy formulation through design, project management and implementation right through to support and upgrades. We are committed to best practices and professional integrity to ensure we deliver quality.
-              </p>
-            </div>
-            <div class="card-footer-c">
-              <a href="#" class="link-c link-icon">Read more
-                <span class="ion-ios-arrow-forward"></span>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card-box-c foo">
-            <div class="card-header-c d-flex">
-              <div class="card-box-ico">
-                <span class="fa fa-usd"></span>
-              </div>
-              <div class="card-title-c align-self-center">
-                <h2 class="title-c"></h2>
-              </div>
-            </div>
-            <div class="card-body-c">
-              <p class="content-c">
-                Customer satisfaction drives every aspect of their commercial contractor business. These time-honored qualities are incorporated into every project built by S A CONSTRUCTIONS ability to combine the right equipment with our experienced crews and Project Managers ensures that your site is ready on time -even on an accelerated schedule
-              </p>
-            </div>
-            <div class="card-footer-c">
-              <a href="#" class="link-c link-icon">Read more
-                <span class="ion-ios-arrow-forward"></span>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card-box-c foo">
-            <div class="card-header-c d-flex">
-              <div class="card-box-ico">
-                <span class="fa fa-home"></span>
-              </div>
-              <div class="card-title-c align-self-center">
-                <h2 class="title-c"></h2>
-              </div>
-            </div>
-            <div class="card-body-c">
-              <p class="content-c">
-                S A CONSTRUCTIONS provides the highest quality of service for just about every type of commercial excavation project, and that's a promise that's backed by the testimony of more than a two decades worth of satisfied customers.
-              </p>
-            </div>
-            <div class="card-footer-c">
-              <a href="#" class="link-c link-icon">Read more
-                <span class="ion-ios-arrow-forward"></span>
-              </a>
-            </div>
-          </div>
-        </div> --}}
-      </div>
-    </div>
-  </section>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Image Gallery with Zoom Effect</title>
-  <style>
-    /* Base styles */
-    .container {
-      padding: 20px;
-    }
-    
-    .image-item {
-      position: relative;
-      overflow: hidden;
-      margin-bottom: 20px;
-      cursor: pointer;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
-    }
-    
-    .image-item img {
-      width: 100%;
-      height: auto;
-      display: block;
-      transition: transform 0.3s ease;
-    }
-    
-    .overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background-color: rgba(0, 0, 0, 0.7);
-      overflow: hidden;
-      width: 100%;
-      height: 0;
-      transition: 0.5s ease;
-    }
-    
-    .image-item:hover .overlay {
-      height: 100px;
-    }
-    
-    .overlay-text {
-      color: white;
-      font-size: 16px;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      width: 90%;
-    }
-    
-    .overlay-text h4 {
-      margin: 0 0 10px 0;
-    }
-    
-    .overlay-text p {
-      margin: 0;
-      font-size: 14px;
-    }
-    
-    /* Modal styles for zoom effect */
-   .modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.9);
-  /* Added flex properties for centering */
-  display: none; /* Will be changed to flex when opened */
-  align-items: center;
-  justify-content: center;
-
-}
-
-.modal-content {
-  margin: auto;
-  display: block;
-  max-width: 50%;
-  max-height: 100%;
-  /* Remove any top margin that might offset centering */
-  position: relative;
-  animation: zoom 0.6s;
-  top: 40;
-
-}
-
-/* Update the script to use flex when showing the modal */
-    
-    .modal-content {
-      animation: zoom 0.6s;
-    }
-    
-    @keyframes zoom {
-      from {transform: scale(0)}
-      to {transform: scale(1)}
-    }
-    
-    .close {
-      position: absolute;
-      top: 15px;
-      right: 35px;
-      color: #f1f1f1;
-      font-size: 40px;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-    
-    .close:hover,
-    .close:focus {
-      color: #bbb;
-      text-decoration: none;
-      cursor: pointer;
-    }
-    
-    .caption {
-      margin: auto;
-      display: block;
-      width: 80%;
-      max-width: 700px;
-      text-align: center;
-      color: #ccc;
-      padding: 10px 0;
-      height: 150px;
-    }
-    
-    /* Responsive layout */
-    .row {
-      display: flex;
-      flex-wrap: wrap;
-      margin: 0 -15px;
-    }
-    
-    .col-lg-4, .col-md-6, .col-sm-12 {
-      padding: 0 15px;
-      box-sizing: border-box;
-    }
-    
-    @media (min-width: 992px) {
-      .col-lg-4 {
-        flex: 0 0 33.333333%;
-        max-width: 33.333333%;
-      }
-    }
-    
-    @media (min-width: 768px) and (max-width: 991.98px) {
-      .col-md-6 {
-        flex: 0 0 50%;
-        max-width: 50%;
-      }
-    }
-    
-    @media (max-width: 767.98px) {
-      .col-sm-12 {
-        flex: 0 0 100%;
-        max-width: 100%;
-      }
-      
-      .modal-content {
-        max-width: 95%;
-      }
-    }
-  </style>
 </head>
 <body>
-
-<section>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-        <div class="image-item">
-          <img src="img/Committee .jpg" class="img-fluid" alt="Committee Members">
-          <div class="overlay">
-            <div class="overlay-text">
-              <h4>Committee Members</h4>
-              <p>New Committee Members.</p>
-            </div>
-          </div>
+    <!-- Banner Carousel Section -->
+  <div class="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/img/Banner 03.jpg') no-repeat center center; background-size: cover;">
+            {{!-- <div class="carousel-caption">
+                <h2>ശ്രീ കൊറ്റൻകുളങ്ങര ദേവീക്ഷേത്രം</h2>
+            </div> --}}
         </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-        <div class="image-item">
-          <img src="img/Vazhipadu.jpg" class="img-fluid" alt="Special Days">
-          <div class="overlay">
-            <div class="overlay-text">
-              <h4>Day</h4>
-              <p>Special Days in Temple</p>
-            </div>
-          </div>
+        <div class="carousel-item" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/img/Banner 02.jpg') no-repeat center center; background-size: cover;">
+            {{!-- <div class="carousel-caption">
+                <h2>ശ്രീ കൊറ്റൻകുളങ്ങര ദേവീക്ഷേത്രം</h2>
+            </div> --}}
         </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-        <div class="image-item">
-          <img src="img/Cover Page.jpg" class="img-fluid" alt="Cover Page">
-          <div class="overlay">
-            <div class="overlay-text">
-              <h4>Image 3 Title</h4>
-              <p>Description of the image goes here.</p>
-            </div>
-          </div>
+        <div class="carousel-item" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/img/Banner 3.jpg') no-repeat center center; background-size: cover;">
+            {{!-- <div class="carousel-caption">
+                <h2>ശ്രീ കൊറ്റൻകുളങ്ങര ദേവീക്ഷേത്രം</h2>
+            </div> --}}
         </div>
-      </div>
-
-      <!-- Add more images as needed -->
     </div>
-  </div>
-</section>
-
-<!-- Modal for zoomed image -->
-<div id="imageModal" class="modal">
-  <span class="close">&times;</span>
-  <img class="modal-content" id="modalImg">
-  <div id="caption" class="caption"></div>
+    
+    <div class="carousel-controls">
+        <div class="carousel-dot active" onclick="currentSlide(1)"></div>
+        <div class="carousel-dot" onclick="currentSlide(2)"></div>
+        <div class="carousel-dot" onclick="currentSlide(3)"></div>
+    </div>
+    
+    <div class="carousel-arrow carousel-prev" onclick="changeSlide(-1)">&#10094;</div>
+    <div class="carousel-arrow carousel-next" onclick="changeSlide(1)">&#10095;</div>
 </div>
 
-<script>
-  // Get the modal
-  const modal = document.getElementById("imageModal");
-  const modalImg = document.getElementById("modalImg");
-  const captionText = document.getElementById("caption");
-  const closeBtn = document.getElementsByClassName("close")[0];
-  
-  // Get all images with class img-fluid
-  const images = document.querySelectorAll(".image-item img");
-  
-  // Add click event to each image
-  images.forEach(img => {
-    img.addEventListener("click", function() {
-      modal.style.display = "block";
-      modalImg.src = this.src;
-      
-      // Get the title from the nearest h4 element
-      const title = this.closest('.image-item').querySelector('h4')?.textContent || '';
-      const desc = this.closest('.image-item').querySelector('p')?.textContent || '';
-      captionText.innerHTML = `<h3>${title}</h3><p>${desc}</p>`;
-    });
-  });
-  
-  // Close the modal when clicking the × button
-  closeBtn.addEventListener("click", function() {
-    modal.style.display = "none";
-  });
-  
-  // Close the modal when clicking outside the image
-  modal.addEventListener("click", function(event) {
-    if (event.target === modal) {
-      modal.style.display = "none";
+
+    <!-- Social Media Icons -->
+    <div class="social-icons">
+        <a href="https://www.instagram.com/kottankulangaratempleofficial/" target="_blank" class="social-icon instagram">
+            <svg viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+        </a>
+        <a href="https://www.facebook.com/" target="_blank" class="social-icon facebook">
+            <svg viewBox="0 0 24 24">
+                <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
+            </svg>
+        </a>
+    </div>
+    
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            {{!-- <li><a href="#">Home</a></li> --}}
+            <li><a href="#about">ആചാരങ്ങൾ</a></li>
+            <li><a href="#notification">അറിയിപ്പുകള്‍</a></li>
+            <li><a href="#gallary">ചിത്രങ്ങൾ</a></li>
+            <li><a href="#committee">കമ്മിറ്റി</a></li>
+            {{!-- <li><a href="#">Donations</a></li> --}}
+            {{!-- <li><a href="#">Contact</a></li> --}}
+        </ul>
+    </nav>
+    
+    <!-- Main Content -->
+    <main>
+            <div class="download-container">
+        <h2>Temple Brochure</h2>
+        <p></p>
+        <a href="/images/book/bookLet.pdf" download class="download-button">
+            <span class="download-icon">📥</span>
+            Download Brochure
+        </a>
+    </div>
+        <!-- About Section -->
+        <section id="about" class="container">
+            <h2>ആചാരങ്ങൾ</h2>
+            <div class="about-content">
+                <div class="about-image.">
+                    {{!-- <img src="/img/devi.jpg" alt="Temple Main Hall">
+                     --}}
+                     <p>ഉത്സവാലോചന
+
+                    മീനം 10, 11 തീയതികളില്‍ കൊല്ലം ജില്ലയില്‍ ചവറ മേജര്‍ ശ്രീ കൊറ്റന്‍കുളങ്ങര ദേവീക്ഷേത്രത്തിലെ ചരിത്രപ്രസിദ്ധ ഉത്സവാഘോഷമാണ് പുരുഷന്മാര്‍ സ്ത്രീവേഷം കെട്ടി വിളക്കെടുക്കുന്ന ചമയവിളക്ക് മഹോത്സവം. ചവറ, പുതുക്കാട്, കുളങ്ങരഭാഗം, കോട്ടയ്ക്കകം എന്നീ നാല് കരകള്‍ ചേര്‍ന്നാണ് ഉത്സവം നടത്തുന്നത്. ഇതില്‍ കുളങ്ങരഭാഗം കരയിലാണ് ക്ഷേത്രം സ്ഥിതിചെയ്യുന്നത്. ഉത്സവം നിശ്ചയിക്കുക എന്നതാണ് ആഘോഷത്തിന്‍റെ മര്‍മ്മപ്രധാനമായഭാഗം. ഐതീഹ്യവിധിപ്രകാരം ഉത്സവനടത്തിപ്പിനെക്കുറി ച്ച് ആലോചിക്കുവാനായി കുളങ്ങരഭാഗം കരയിലെ നിലവിലുള്ള ഭരണസമിതിയുടെ ഭാരവാഹികള്‍ നാല് കരക്കാര്‍ക്കും രേഖാ മൂലം അറിയിപ്പ് നല്‍കുന്നു. നാല് കരകളിലെയും പ്രതിനിധികള്‍ നിര്‍ദ്ദിഷ്ടദിവസം ക്ഷേത്രത്തിന്‍റെ മുന്‍വശത്ത് 'നടേവെളി' എന്നറിയപ്പെടുന്ന മൈതാനത്ത് എത്തിച്ചേരുന്നു. അവിടെ തെക്കും വടക്കുമായി ര@ണ്ട് കളിത്തട്ടുകള്‍ സ്ഥാപിച്ചിട്ടു@ണ്ട്. ചവറ, പുതുക്കാട് എന്നീ കരക്കാര്‍ക്ക് ഇരിക്കുവാന്‍ തെക്കേ കളിത്തട്ടും, കുളങ്ങരഭാഗം, കോട്ടയ്ക്കകം കരക്കാര്‍ക്ക് ഇരിക്കുവാന്‍ വടക്കേ കളിത്തട്ടുമെന്നതാണ് സാമ്പ്രദായികരീതി. ഈ കളിത്തട്ടുകളില്‍ ഇരുന്നാണ് കരക്കാര്‍ ക്ഷേത്രാ ചാരവുമായി ബന്ധപ്പെട്ട കാര്യങ്ങളെക്കുറിച്ച് ആലോചനകള്‍ നടത്തുന്നത്..
+                    </p>
+                </div>
+                <div class="about-text">
+                    
+                    <p>ഏകദേശം 6 മണിയോടുകൂടി ഓരോ കളിത്തട്ടിലും തനതുകരയായ കുളങ്ങരഭാഗം കരക്കാര്‍ ഭദ്രദീപം തെളിയിക്കുന്നു. അതിനുശേഷം തെക്കേ കളിത്തട്ടുകാര്‍ വടക്കേ കളിത്തട്ടിലേയ്ക്ക് നോക്കി അവരുടെ വരവ് അറിയിക്കുന്നു. പ്രധാന ഭാരവാഹി തെക്കേ കളിത്തട്ടിലേയ്ക്ക് നോക്കി നാല് കരകളും ചേര്‍ന്ന് കൂട്ടായി ഉത്സവാലോചന നടത്തുന്നതിന് ചവറ, പുതുക്കാട് കരക്കാര്‍ എത്തിച്ചേര്‍ന്നിട്ടുണ്ടേ@ാ എന്ന് ചോദിക്കുന്നു. ഉണ്ടെ@ന്ന് മറുപടി ലഭിക്കുമ്പോള്‍ അവരെ വടക്കേ കളിത്തട്ടിലേയ്ക്ക് ക്ഷണിക്കുന്നു. നിറദീപവുമായി ചവറ, പുതുക്കാട് കരക്കാര്‍ വടക്കേ കളിത്തട്ടില്‍ പ്രവേശിക്കുന്നു. തുടര്‍ന്ന്  കേന്ദ്ര ഉത്സവക്കമ്മിറ്റിയുടെ നേതൃത്വത്തില്‍ നാല്കരക്കാരും കൂടിച്ചേര്‍ന്ന് കൂട്ടായി ഉത്സവം നടത്തുന്നതിനെ ക്കുറിച്ച് ആലോചിക്കുന്നു. ഉത്സവം നിശ്ചയിച്ചാല്‍ ഈ വിവരം നാല് കരക്കാരെയും അറിയിക്കുക എന്ന ഉദ്ദേശ്യത്തില്‍ രണ്ട@് കതിനാവെടികള്‍ മുഴക്കുന്നു. ഇതോടെ ആലോചനായോഗം സമാപിക്കുന്നു</p>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+            </div>
+        </section>
+   
+        <!-- About Section -->
+        <section id="about" class="container">
+            <h2>കുരുത്തോലപ്പന്തലിന്‍റെ ചരിത്രം</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="/img/group.jpg" alt="Temple Main Hall">
+                    
+                   
+                </div>
+                <div class="about-text">
+                    
+    കുരുത്തോലപ്പന്തലിന്‍റെ ചരിത്രം
+     ക്ഷേത്ര ഐതീഹ്യവുമായി ബന്ധപ്പെട്ടതാണ് കുരുത്തോലകൊ@ുള്ള താല്‍ക്കാലിക ക്ഷേത്രം. കുരുത്തോലകൊണ്ട@ുള്ള ശ്രീകോവിലും മുഖമണ്ഡപവും സായാഹ്നസൂര്യന്‍റെ കിരണങ്ങളേറ്റു നില്‍ക്കുന്ന കാഴ്ച നയനാനന്ദകരമാണ്. മണ്ണില്‍ സ്പര്‍ശിക്കാതെ മുറിച്ചെടുക്കുന്ന കമുക്, വാഴ, കുരുത്തോല എന്നിവ കയറോ, ആണിയോ ഉപയോഗിക്കാതെ പ്രത്യേക കണക്കില്‍ ഒരുക്കിയെടുക്കുന്നു. ഉത്സവത്തിന് കെട്ടുന്ന കുരുത്തോലപ്പന്തലിനുള്ള സാധനങ്ങള്‍ അന്നേദിവസമേ മുറിയ്ക്കാന്‍ പാടുള്ളു. കല്‍പീഠങ്ങള്‍ കാക്കാത്തിമാരാണ് വൃത്തിയാക്കുന്നത്. ഈ ജോലിയ്ക്കുമുമ്പ് കരക്കാര്‍ക്ക് വെറ്റിലയും പുകയിലയും ഉള്‍പ്പെടുന്ന ദക്ഷിണ നല്‍കി അനുവാദം വാങ്ങണം. കരക്കാര്‍ തിരിച്ചും ദക്ഷിണ നല്‍കുന്നു. കുരുത്തോലപ്പന്തല്‍ കെട്ടുന്നതിനുള്ള അവകാശം ത@ണ്ടാര്‍ സമുദായത്തിനാണ്. കരപ്രമാണിമാരുടെ പക്കല്‍നിന്നും ആശാ രി സമുദായം കൈനീട്ടം സ്വീകരിച്ച് അവരുടെ സാന്നിദ്ധ്യത്തില്‍ വേണം കുരുത്തോല പന്തല്‍ ഉയര്‍ത്തേ@ണ്ടത്. ദേവിക്ക് ഇരിക്കുവാനുള്ള കുരുത്തോലപ്പന്തല്‍ ക്ഷേത്രത്തിന് കിഴക്കുവശം ഉയര്‍ന്നാലെ കെട്ടുകാഴ്ചകള്‍ ക്ഷേത്രമൈതാനത്ത് കടക്കുകയുള്ളു. ലോകത്ത് ഇത്രയും ആചാരാനുഷ്ഠാനങ്ങളോടെ നിര്‍മ്മിക്കുന്ന കുരുത്തോലപ്പന്തലും ആചാരങ്ങളും മറ്റെവിടെ യും കാണാന്‍ സാധിക്കുകയില്ല. ദേവീചൈതന്യം കണ്ടെ@ത്തിയ ശിലയ്ക്ക് ചുറ്റും ഗോപാലബാലകര്‍ കുരുത്തോലകൊ@് അമ്പലം കെട്ടിയതിന്‍റെ ചരിത്രമാണ് കുരുത്തോലപ്പന്തലിന്‍റേത്.
+മീനം 10ന് ചവറ-പുതുക്കാട് കരക്കാരുടെ നേതൃത്വത്തിലും മീനം 11ന് കുളങ്ങരഭാഗം-കോട്ടയ്ക്കകംകരക്കാരുടെ നേതൃത്വത്തിലുമാണ് കുരുത്തോലപ്പന്തലുകള്‍ സ്ഥാപിക്കുന്നത്.
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="container">
+            <h2>തിരുവാഭരണ ഘോഷയാത്ര </h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="/img/kottanKuruthola.jpg" alt="Temple Main Hall">
+                </div>
+                <div class="about-text">
+                        തിരുവാഭരണ ഘോഷയാത്ര 
+                        കുംഭം 30 വൈകിട്ട് 3 മണിക്ക് കൊല്ലം ആനന്ദവല്ലീശ്വരം
+                        ക്ഷേത്രത്തില്‍നിന്നും ആരംഭിച്ച് 
+                        ഭക്തജനങ്ങളുടെ സ്വീകരണങ്ങള്‍ ഏറ്റുവാങ്ങി 
+                        ചവറ ജംഗ്ഷനില്‍ എത്തിച്ചേരുന്നതും 
+                        അവിടെനിന്നും കൊറ്റന്‍കുളങ്ങരയിലെ 
+                        ഓട്ടോ ഡ്രൈവേഴ്സ് & ഓണേഴ്സിന്‍റെ
+                        വകയായി നടത്തുന്ന  മയിലാട്ടം, മയൂരനൃത്തം, 
+                        മുത്തുക്കുടകള്‍, ഫ്ളോട്ടുകള്‍, 
+                        അലങ്കരിച്ച ഓട്ടോറിക്ഷകള്‍, ഗജവീരന്മാര്‍, 
+                        താലപ്പൊലി എന്നിവയുടെ അകമ്പടിയോടുകൂടി 
+                        കൊറ്റന്‍കുളങ്ങര,കുഞ്ഞാലുംമൂട് വഴി 
+                        ക്ഷേത്രസന്നിധിയില്‍ എത്തിച്ചേരുന്നതുമാണ്.
+                        താലപ്പൊലി ഘോഷയാത്രയില്‍ പ്രായഭേദമന്യേ 
+                        എല്ലാ സ്ത്രീ ജനങ്ങള്‍ക്കും 
+                        പങ്കെടുക്കാവുന്നതാണ്.
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+            </div>
+        </section>
+        <section id="about" class="container">
+            <h2>കടത്താറ്റുവയലല്‍പൊങ്കാല </h2>
+            <div class="about-content">
+                   <p>സര്‍വ്വ മംഗള കാരിണിയും സര്‍വ്വാഭീഷ്ട വരദായിനി യും സര്‍വ്വചരാചര സാക്ഷി ഭൂതയും കൊറ്റന്‍ നിവേദ്യ പ്രിയയുമായി വിളങ്ങുന്ന കൊറ്റന്‍കുളങ്ങര ശ്രീ ദേവി യുടെ ചമയവിളക്ക് മ ഹോ ത്സവത്തോടനു ബന്ധിച്ചു ക്ഷേത്ര ആചാരങ്ങ ളുമായി വളരെ പ്രാധാന്യമുള്ള കട ത്താറ്റുവയലില്‍ സ്ത്രീ ഭക്തജനങ്ങള്‍ പ്രായഭേദമ ന്യേ സര്‍വ്വഐശ്വര്യ ത്തിനു വേണ്ട@ി പൊങ്കാല സമര്‍പ്പി ക്കുന്നത്. .          
+    മകര കൊയ്ത്തു കഴിഞ്ഞ് ഇല്ലവും വല്ലവും നിറയു മ്പോള്‍ കൊയ്തു കഴിഞ്ഞ പാടങ്ങളില്‍ അഗ്നികൂട്ടി പൊങ്കാല നിവേദിച്ച് പ്രകൃ തിയ്ക്കും, ഈശ്വരനും ദൈ വങ്ങള്‍ക്കും പ്രത്യേകിച്ച് സൂര്യദേവനും നന്ദി രേഖ പ്പെടുത്തി സമൃദ്ധമായ ഒരു നാളയെ സ്വപ്നം കണ്ട@ു വാ ണിരുന്ന ഒരു കാര്‍ഷിക ജനത യുടെ പിന്‍മുറക്കാരാ ണ് നാം. പ്രകൃതീ പ്രീതി ക്കെന്ന പോലെ പില്‍ ക്കാലത്ത് ദേവീ പ്രീതിക്കും ഭക്ത ജനങ്ങള്‍ പൊങ്കല്‍ അര്‍പ്പി ച്ചു തുടങ്ങി.                .
+	വെളിച്ചവും, ഊര്‍ജ്ജവും പ്രദാനം ചെയ്യുന്ന സൂര്യ ഭഗവാനെയും മഴയുടെ ദേവ നായ ഇന്ദ്രനേയും നമുക്കാ വശ്യമായ പാല്‍ ചുരത്തി ത രുന്ന ഗോമാതാ വിനെയും സമ്പല്‍സമൃദ്ധി പ്രതീകമാ യ മഹാലക്ഷ്മിയേയും നന്‍ മയുടെ മനസ്സിനാല്‍ സര്‍വ്വം സമര്‍പ്പി ക്കുന്ന നന്ദി സൂച കമത്രെ പൊങ്കല്‍. ഒരുത്തമ സമൂഹത്തിന്‍റെ ഉപാസന യായിരുന്ന പൊങ്കല്‍ ആണ് മലയാളികള്‍ക്ക് പൊങ്കാല യായി തീര്‍ന്നത്. അഗ്നികൂ ട്ടി പാകപെടുത്തിയ അരി ക്കാണ് പൊങ്കല്‍ എന്ന് പറ യുന്നത്. തുറന്ന സ്ഥലത്ത് ദേവിയെ മനസ്സില്‍ ധ്യാനി ച്ച് സര്‍വ്വപാപമുക്തിക്കായി, പൊങ്കാല അര്‍പ്പിക്കുന്നു.</p>
+                <div class="about-image">
+                    <img src="/img/ulsavam2.jpg" alt="Temple Main Hall">
+                 
+                </div>
+                <div class="about-text">
+                        കടത്താറ്റുവയലല്‍പൊങ്കാല
+    പൊങ്കാല സൂര്യപൊങ്കാലയും ചന്ദ്രപൊങ്കാലയുമു@ണ്ട്. സൂര്യദേവ ന് അഭിമുഖമായി ചെയ്യുന്നത് സൂര്യ പൊങ്കാലയും ചന്ദ്രന്അഭി മുഖമാ യി ചെയ്യുന്നത് ചന്ദ്ര പൊങ്കലുമാണ്.  
+    ഈ ആചാരങ്ങളിലെല്ലാം കാര്‍ ഷിക സംസ്ക്കാരത്തിന്‍റെയും പ്രകൃതിശക്തികള്‍ ക്കിണങ്ങിയു ള്ള ജീവിതത്തി ന്‍റേയും മധുര സ്മരണകള്‍ നമുക്ക് പൊങ്കാലയി ലൂടെ കാണാവുന്നതാണ്. മൂന്ന് ചു ടുകട്ടകള്‍ കൊണ്ട@ുള്ള താല്‍ക്കാ ലിക അടുപ്പുകളിലാണ് പൊങ്കാല യിടേണ്ട@ത്. പുതിയ മണ്‍കലത്തില്‍ കൊതുമ്പും, ചൂട്ടും ഉപയോഗിച്ച് അരി വേവിക്കുന്നു. പാകമാകു മ്പോള്‍ ശര്‍ക്കര, പഴം നെയ്യ്, മു ന്തിരി, നാളീകേരം മറ്റു ഉപസാധന ങ്ങളും ചേര്‍ത്ത് പായസമാക്കി പൊങ്കാല ദേവീ പാദത്തില്‍ സമര്‍ പ്പിക്കുന്നു. ക്ഷേത്രത്തില്‍ നിത്യവും നിവേദ്യ മുണ്ട@ാക്കി നേദിക്കുന്നത് ശാന്തിക്കാരനാണ്. എന്നാല്‍ ഭക്ത ജനങ്ങള്‍ വ്രതശുദ്ധിയോടെ പൊ ങ്കാല നിവേദ്യം ഉണ്ട@ാക്കി നേരിട്ടു ദേവിയ്ക്കു നേദിക്കുന്ന ചടങ്ങാണ്     പൊങ്കാല.  പൊങ്കാലയ്ക്ക് പുത്തന്‍കലം, അരി, ജലം, ശര്‍ക്കര, നാളീകേരം അഗ്നി എന്നിവയാണവശ്യം.  പുത്ത ന്‍ കലമാകട്ടെ ഈ പ്രകൃതിയുടെ പ്രതീകമാണ്. അരി ഞാനെന്ന അഹംഭാവവും മനസ്സിന്‍റെ പ്രതീക വും കൂടിയാണ്, അഖണ്ഡമായ ആനന്ദമാണ് ശര്‍ക്കര. നാളീകേരം പഞ്ചകോശ നിര്‍മ്മിതമായ ശരീര ത്തെ പ്രതിനിധാനം ചെയ്യുന്നു.               .      അരിയും, ശര്‍ക്കരയും നാളീകേരവും, ചേര്‍ത്ത് ജലാഗ്നികളുടെ സഹായത്തോടെ പായസം രൂപപ്പെടുമ്പോള്‍ പഞ്ച കോശാത്മകമായ ശരീരത്തില്‍ അഹംബോധം നശിച്ച് ജീവാത്മാവ് അഖണ്ഡമായ സച്ചിദാനന്ദ പര മാത്മാവില്‍ വലയം പ്രാപിക്കുന്നു എന്ന വേദാന്തതത്വത്തെ സാധ്യമാ ക്കുകയാണ് പൊങ്കാലയിലൂടെ നാം ചെയ്യുന്നത്. വളരെ മഹ ത്തായ ഒരു സന്ദേശം ഒരു ലളിതമായ പ്രക്രിയ യില്‍കൂടി ജനമനസ്സില്‍ എത്തിക്കാ ന്‍    പരിശ്രമിച്ച പൂര്‍വ്വ ജന്‍മങ്ങളുടെ തൃപ്പാദങ്ങളില്‍ നമ്രശിരസ്ക്കരാ യി നമുക്കൊരുമിച്ച് കൊറ്റന്‍കുളങ്ങര യമ്മയ്ക്ക് പൊങ്കാല സമര്‍പ്പിക്കാം.
+
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+            </div>
+        </section>
+         <section id="about" class="container">
+            <h2>കെട്ടുകാഴ്ച്ച (ആര്‍പ്പോവിളികളും ആരവങ്ങളുമായുള്ള കരപറയല്‍ ചടങ്ങ്)</h2>
+            <div class="about-content">
+                {{!-- <div class="about-image">
+                    <img src="/img/kottanKuruthola.jpg" alt="Temple Main Hall">
+                </div> --}}
+                <p>  ചിരപുരാതനവും ചരിത്രപ്രസിദ്ധവുമായ കൊറ്റന്‍ കുളങ്ങര ദേവീക്ഷേത്രത്തില്‍ മീനം 10,11 തീയതികളില്‍ നടക്കുന്ന ചമയവിളക്കു മഹോത്സവത്തിന്‍റെ കെട്ടുകാഴ്ച്ച യുമായി ബന്ധപ്പെട്ട ചില ആചാരക്രമങ്ങളാണ് ചുവടെ ചേര്‍ക്കുന്നത്. ചവറ, പുതുക്കാട്, കുളങ്ങരഭാഗം, കോട്ടക്കകം എന്നീ നാലു കരകളുടെ സംയുക്താഭി മുഖ്യത്തിലാണ് ഐതീഹ്യവിധിപ്രകാരമുള്ള അനുഷ്ഠാന കര്‍മ്മങ്ങള്‍ നിര്‍വ്വഹിക്കുന്നത്.
+മീനം 10ന് ചവറ കരയില്‍ നിന്നുള്ള വണ്ട@ിക്കുതിരകളും ആനകളും ചവറ ജംഗ്ഷന്‍ വഴി ദേശീയപാതയിലൂടെ വടക്കോട്ട് സഞ്ചരിച്ച് കൊറ്റന്‍കുളങ്ങര ജംഗ്ഷനിലെത്തി ദേശീയപാതയുടെ പടിഞ്ഞാറുവശത്ത് നിലയുറപ്പിക്കുന്നു  കോട്ടക്കകം, കുളങ്ങരഭാഗം കരകളില്‍ നിന്നുള്ള വണ്ട@ിക്കുതിരകളും ആനകളും യഥാക്രമം നല്ലേഴുത്ത്മുക്ക് വഴി തെക്കോട്ടു സഞ്ചരിച്ച് കൊറ്റന്‍കുളങ്ങര ജംഗ്ഷനില്‍ എത്തി ദേശീയപാതയുടെ കിഴക്കുവശത്ത് നിലയുറപ്പിക്കു ന്നു. പുതുക്കാട് കരയില്‍ നിന്നുള്ള വണ്ട@ിക്കുതിരകളും ആനകളും കിഴക്കുനിന്നും കുഞ്ഞാലുംമൂട് വഴി പടിഞ്ഞാ റോട്ടു വന്ന് പഞ്ചായത്ത് ഓഫീസിന്‍റെ മുന്‍വശം നിലയുറ പ്പിക്കുന്നു. അനന്തരം നാലു കരകളുടെയും പ്രതിനിധിക ള്‍ കൊറ്റന്‍കുളങ്ങര ജംഗ്ഷനില്‍ ഒരുമിച്ചുകൂടി ദേവിയ്ക്ക് കുടിയിരിക്കുവാനായി ക്ഷേത്രമൈതാനത്ത് നിര്‍മ്മിച്ചിട്ടു ള്ള രണ്ട@ു കല്‍ത്തറകളില്‍ (കാക്കാത്തിക്കല്ലുകള്‍) തെക്കേ കല്ത്തറയില്‍ അരങ്ങ്(കുരുത്തോലപ്പന്തല്‍) പൂര്‍ത്തിയാ യോ എന്ന് അന്വേഷിക്കുന്നു. പൂര്‍ത്തിയായെന്ന് ബോധ്യം വന്നാല്‍ ആതിഥേയകരയായ കുളങ്ങരഭാഗം കരക്കമ്മിറ്റി പ്രസിഡന്‍റിന്‍റെ നേതൃത്വത്തില്‍ നാലു കരയുടെയും പ്രതി നിധികള്‍ റോഡിന്‍റെ പടിഞ്ഞാറുവശം നിലയുറപ്പിച്ചിട്ടു ള്ള ചവറ കരയുടെ വക കുതിരകളുടെ മുന്നില്‍ നിന്നുകൊ @ണ്ട് പരസ്പരം കൈകള്‍ ചേര്‍ത്ത് മുകളിലേക്കുയര്‍ത്തി 'ആര്‍പ്പോ ഋര്‍റോ' എന്ന് ആരവം മുഴക്കിയ ശേഷം കുതിരകളും ആനകളും കിഴക്കോട്ടു നീങ്ങുന്നു. ചവറ, കോട്ടക്കകം, കുളങ്ങരഭാഗം എന്ന ക്രമത്തിലാണ് കുതിര കള്‍ കിഴക്കോട്ട് പോകുന്നത്. ക്ഷേത്രമൈതാനിയില്‍ എ ത്തിയ ശേഷം ആനകളെ തെക്കുവശം പടിഞ്ഞാറുഭാഗ ത്ത് വടക്കോട്ടു ദര്‍ശനമായി നിര്‍ത്തുന്നു. ചവറ കരയുടെ കുതിരകളെ മൈതാനത്തിന്‍റെ തെക്കുവശം കിഴക്കുഭാഗ ത്ത് വടക്കോട്ട് ദര്‍ശനമായും എടുപ്പുകുതിരയേയും പുതു ക്കാട് കരയുടെ കുതിരകളേയും കിഴക്കുവശത്ത് പടിഞ്ഞാ റോട്ടു ദര്‍ശനമായും കോട്ടക്കകം കരയുടെ കുതിരകളെ വടക്കുവശം കിഴക്കുമാറി തെക്കോട്ടു ദര്‍ശനമായും കുള ങ്ങരഭാഗം കരയുടെ കുതിരകളെ വടക്കുവശം പടിഞ്ഞാറു മാറി തെക്കോട്ടു ദര്‍ശനമായും ക്രമീകരിക്കുന്നു. ഈ സന്ദ ര്‍ഭത്തില്‍ കെട്ടുകാഴ്ചയ്ക്ക് ആത്മീയതലത്തില്‍ നേതൃ ത്വം നല്കുവാനായി വെളിച്ചപ്പാടിന്‍റെ കാര്‍മ്മികത്വത്തില്‍ ദേവിയുടെ എഴുന്നള്ളത്തിനുള്ള ഒരുക്കങ്ങള്‍ ക്ഷേത്രത്തി ല്‍ നടക്കുന്നു. ശ്രീകോവിലില്‍ വിഗ്രഹത്തിന്‍റെ പിന്നില്‍ കുടിയിരുത്തിയ വിശ്വജനനിയുടെ രൂപം ആവാഹിച്ച ബാഹ്യകവചം ശ്രീകോവില്‍മുറ്റത്തുള്ള ആല്‍ത്തറയില്‍ വച്ചിട്ടുള്ള ചട്ടക്കൂടില്‍ ചേര്‍ത്ത് 'ജീവത' ഒരുക്കുന്നു. വെളി ച്ചപ്പാടിന്‍റ നേതൃത്വത്തില്‍ തൂക്കുവിളക്ക്, വാളും പരിച യും, കുട എന്നിവയുടെ അകമ്പടിയോടെ ദേവീദാസന്മാര്‍ ജീവത ചുമലിലേന്തി ശ്രീകോവില്‍ വലം വച്ച് കിഴക്കേ കാ വടത്തിനു മുന്നിലെത്തി അനുഗ്രഹവര്‍ഷം ആവാഹിച്ച് ഉറഞ്ഞു തുള്ളി തെക്കേ അരങ്ങിന്‍റെ മുന്നിലെത്തുന്നു. വെളിച്ചപ്പാട് അരങ്ങിന്‍റെ തച്ചുശാസ്ത്ര വിധിപ്രകാരമുള്ള നിര്‍മ്മാണം പരിശോധിക്കുന്നു. തെറ്റുകുറ്റങ്ങളുണ്ടെങ്കില്‍ ശി ല്പികളെ അറിയിക്കുന്നു. കുറ്റമറ്റതെങ്കില്‍ ശില്പികളെ അനുമോദിക്കുന്നു. തുള്ളിക്കൊണ്ടുതന്നെ ആനകളുടെയും കുതിരകളുടെയും മുന്നിലെത്തി അനുഗ്രഹം ചൊരിഞ്ഞ ശേഷം കുതിരകളേയും ആനകളെയും ക്ഷേത്രത്തിലേക്ക് ആനയിക്കാന്‍ ആഹ്വാനം ചെയ്യുന്നു. ഇപ്രകാരം ഏറ്റവും മുന്നില്‍ എടുപ്പുകുതിര, പിന്നാലെ ചവറ, പുതുക്കാട്, കോ ട്ടക്കകം, കുളങ്ങരഭാഗം എന്ന ക്രമത്തില്‍ കുതിരകളെയും ആനകളെയും ക്ഷേത്രത്തിലേക്ക് ആനയിച്ച് ശ്രീകോവില്‍ പ്രദക്ഷിണം വച്ച് വടക്കേ റോഡിലൂടെ കുഞ്ഞാലുമ്മൂട് വഴി കെട്ടുകാഴ്ച്ച അരങ്ങേറുന്ന കടത്താറ്റുവയലില്‍ എ ത്തിച്ചേരുന്നു. നാലു കരകളിലെയും വണ്ടിക്കുതിരകളുടെ പിന്നിലാണ് അതത് കരകളിലെ നെറ്റിപ്പട്ടം കെട്ടിയ ആന കളുടെ സ്ഥാനം. ഒടുവില്‍ അണിചേരുന്ന കുളങ്ങരഭാഗം കരയുടെ പിന്നിലെ കുതിരയെ 'അകമ്പടിക്കുതിര'യെന്ന നിലയില്‍ പുറകോട്ടു ദര്‍ശനമായിട്ടാണ് ആനയിക്കുക. ഏറ്റവും പിന്നിലായി വെളിച്ചപ്പാടിന്‍റെ നേതൃത്വത്തില്‍ എഴുന്നള്ളത്തും അനുഗമിക്കുന്നു. കുഞ്ഞാലുംമൂട്ടില്‍ എത്തിയ ശേഷം കുതിരകളും ആനകളും ഇടയ്ക്കുള്ള വയ ലിലൂടെയും എഴുന്നള്ളത്ത് കുഞ്ഞാലുമ്മൂട് ആല്‍ത്തറ ചുറ്റി പഞ്ചായത്ത് റോഡിലൂടെയും കടത്താറ്റുവയലില്‍ എത്തിച്ചേരുന്നു. കെട്ടുകാഴ്ച്ച കടത്താറ്റുവയലില്‍ എത്തി യ ശേഷം ദേവീചൈതന്യം കുടികൊള്ളുന്ന ആല്‍ത്തറ പ്രദക്ഷിണം വച്ച് കുതിരകളും ആനകളും ആല്‍ത്തറയുടെ മുന്നില്‍ നിരന്നു നില്ക്കുന്നു. കുതിരകളുടെയും ആനക ളുടെയും മുന്നില്‍ വെളിച്ചപ്പാട് തുള്ളിയനുഗ്രഹിച്ച ശേഷം എഴുന്നള്ളത്ത് വയലിലെ ആല്‍ത്തറയില്‍ കുടിയിരുത്തു ന്നു. ആചാരവിധിയാലുള്ള പൂജാദികര്‍മ്മങ്ങള്‍ പൂര്‍ത്തി യാക്കി കുതിരകള്‍, ആനകള്‍, ഏറ്റവും പിന്നിലായി എഴു ന്നള്ളത്ത് എന്ന ക്രമത്തില്‍ തിരികെ ക്ഷേത്രമൈതാനിയി ല്‍ എത്തിച്ചേരുന്നു. കുഞ്ഞാലുമ്മൂട് ആല്‍ത്തറ ചുറ്റി വരു ന്ന എഴുന്നള്ളത്ത് കുതിരമൂട്ടില്‍ തുള്ളിയ ശേഷം തെക്കേ അരങ്ങില്‍ കുടിയിരിക്കുന്നു. തുടര്‍ന്ന് ദീപാരാധന, സേവ, സംഗീതസദസ്സ്, ശ്രീഭൂതബലി, ചമയവിളക്ക്, ആറാട്ട് എന്ന ക്രമത്തില്‍ ഒന്നാംദിന ഉത്സവം പൂര്‍ണ്ണമാകുന്നു. </p>
+                <div class="about-text">
+                            <p>ഒന്നാംദിന ഉത്സവം പൂര്‍ണ്ണമാകുന്നു. 
+മീനം 11ന് രണ്ട@ാം ഉത്സവദിവസം തലേ ദിവസത്തെ പോ ലെ ചവറ കരയുടെ കുതിരകളും ആനകളും തെക്കുനിന്ന് വന്ന് കൊറ്റന്‍കുളങ്ങര ജംഗ്ഷനില്‍ ദേശീയപാതയുടെ പടിഞ്ഞാറു വശത്തും കുളങ്ങരഭാഗംകര, കോട്ടക്കകംകര എന്ന ക്രമത്തില്‍ കുതിരകളും ആനകളും വടക്കുനിന്ന് വന്ന് കൊറ്റന്‍കുളങ്ങര ജംഗ്ഷനില്‍ ദേശീയപാതയുടെ കിഴക്കുവശത്തും നിലയുറപ്പിക്കുന്നു. പുതുക്കാട് കരയു ടെ കുതിരകളും ആനകളും പഞ്ചായത്ത് ഓഫിസിന്‍റെ മുന്നിലും നില്ക്കും. ശേഷം നാലു കരകളുടെയും പ്രതിനിധികള്‍ പതിവുപോലെ കൊറ്റന്‍കുളങ്ങരയിലെ ത്തി രണ്ട@ാം ദിവസം ദേവിക്ക് കുടിയിരിക്കാന്‍ മൈതാന ത്ത് നിര്‍മ്മിച്ചിട്ടുള്ള വടക്കേ കല്ത്തറയുടെ മേലേ ഒരുക്കു ന്ന 'അരങ്ങി'ന്‍റെ പണി പൂര്‍ത്തിയായെന്ന് ഉറപ്പു വരുത്തി യ ശേഷം കുളങ്ങരഭാഗം കരക്കമ്മിറ്റി പ്രസിഡന്‍റിന്‍റെ നേതൃത്വത്തില്‍ റോഡിന്‍റെ കിഴക്കുവശം നിലയുറപ്പിച്ചിട്ടു ള്ള കുളങ്ങരഭാഗം കര വക കുതിരകളുടെ മുന്നില്‍ നിന്നു കൊണ്ട@് കൈകള്‍ പരസ്പരം ചേര്‍ത്ത് മേലോട്ടുയര്‍ത്തി പതിവ് പോലെ ആരവം മുഴക്കിയ ശേഷം കുളങ്ങരഭാഗം, കോട്ടക്കകം, ചവറ എന്ന ക്രമത്തില്‍ കുതിരകളെയും ആന കളെയും കിഴക്കോട്ട് ആനയിച്ച് ക്ഷേത്രമൈതാനിയില്‍ തലേദിവസത്തെ സ്ഥാനങ്ങളില്‍ നിലയുറപ്പിക്കുന്നു. ഈ സന്ദര്‍ഭത്തില്‍ ഒന്നാം ഉത്സവദിനത്തിലെ പോലെ വെളിച്ച പ്പാടിന്‍റെ നേതൃത്വത്തില്‍ തുള്ളിയനുഗ്രഹം ചൊരിഞ്ഞു കൊ@ണ്ട് ക്ഷേത്രത്തില്‍ നിന്നും എഴുന്നള്ളത്ത് വരുന്നു. ആദ്യദിവസത്തെ പോലെ പതിവ് അനുഷ്ഠാനകര്‍മ്മങ്ങ ള്‍ നിര്‍വ്വഹിച്ച ശേഷം വെളിച്ചപ്പാട് കുതിരകളെയും ആന കളെയും ക്ഷേത്രത്തിലേക്ക് ആനയിക്കാന്‍ ആഹ്വാനം ചെയ്യുന്നു. ഏറ്റവും മുന്നിലായി എടുപ്പുകുതിര, പിന്നാലെ കുളങ്ങരഭാഗം, കോട്ടക്കകം, പുതുക്കാട്, ചവറ എന്ന ക്രമ ത്തില്‍ കുതിരകളും ആനകളും ക്ഷേത്രത്തിലെത്തി ശ്രീകോവില്‍ പ്രദക്ഷിണം വച്ച് വടക്കേ റോഡിലൂടെ കുഞ്ഞാലുംമ്മൂട് വഴി കടത്താറ്റുവയലിലേക്ക് പോകുന്നു. രണ്ട@ാം ദിവസം ഒടുവില്‍ അണി ചേരുന്ന ചവറ കരയുടെ പിന്നിലെ കുതിരയെ 'അകമ്പടിക്കുതിര'യെന്ന നിലയില്‍ പുറകോട്ട് ദര്‍ശനമായിട്ടാണ് ആനയിക്കുക. ഏറ്റവും പിന്നിലായി എഴുന്നള്ളത്തും അനുഗമിക്കുന്നു. കെട്ടുകാഴ് ച്ചയുടെ വര്‍ണ്ണഭംഗി ആസ്വദിച്ച് ആനന്ദാമൃതവര്‍ഷം തൂ കി ഏറ്റവും പിന്നിലായിരിക്കും എപ്പോഴും എഴുന്നള്ളത്തി ന്‍റെ സ്ഥാനം. വയലിലെത്തിച്ചേര്‍ന്ന ശേഷം കഴിഞ്ഞ ദിവസത്തെ പതിവ് അനുഷ്ഠാനകര്‍മ്മങ്ങള്‍ പൂര്‍ത്തിയാ ക്കി തിരികെ ക്ഷേത്രമൈതാനിയില്‍ എത്തിച്ചേരുന്നു. പോകുമ്പോഴും വരുമ്പോഴും എഴുന്നള്ളത്ത് കുഞ്ഞാലും മ്മൂട് ആല്‍ത്തറ ചുറ്റും. ക്ഷേത്രമൈതാനിയിലെത്തി കുതി രമൂട്ടില്‍ തുള്ളിയനുഗ്രഹിച്ച ശേഷം എഴുന്നള്ളത്ത് വടക്കേ അരങ്ങില്‍ കുടിയിരിക്കുന്നു. തുടര്‍ന്ന് പതിവുപോലെ ദീപാരാധന, സേവ, സംഗീതസദസ്സ്, ശ്രീഭൂതബലി, ചമയവിളക്ക്, ആറാട്ട് എന്ന ക്രമത്തില്‍ വിശ്വപ്രസിദ്ധമായ കൊറ്റന്‍കുളങ്ങര ചമയവിളക്ക് മഹോത്സവം സമാപനം കുറിക്കുന്നു.
+</p>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+            </div>
+        </section>
+
+
+
+         <section id="about" class="container">
+            <h2>വിശ്വപ്രസിദ്ധമായ ചമയവിളക്ക് മഹോത്സവം</h2>
+            <div class="about-content">
+                    <p>
+                        ചവറ: അതീവ ഭക്ത്യാദരങ്ങളോട് കൂടിയല്ലാതെ ആ തിരുനാമം ഉച്ച രിക്കുവാന്‍ കഴിയുകയില്ല കാര ണം "കൊറ്റന്‍കുളങ്ങര ഭഗവതി യുടെ കാരുണ്യകടാക്ഷം ജാതി മത ഭേദമന്യേ എല്ലാവരിലും അനു ഗ്രഹം ചൊരിഞ്ഞ് നില്‍ക്കുന്നു. അഭീഷ്ടവരദായിനിയായ ദേവി യുടെ തിരുമുമ്പില്‍ നില്‍ക്കുമ്പോ ള്‍ ശാരീരികവും മാനസികവുമാ യി നേരിടുന്ന എല്ലാ പ്രശ്നങ്ങള്‍ ക്കും ദേവിയുടെ അനുഗ്രഹത്താ ല്‍ ശാശ്വതപരിഹാരം ലഭിക്കുന്നു.
+കൊല്ലം നഗരത്തില്‍ നിന്നും 12 കിലോമീറ്റര്‍ വടക്ക് ദേശീയപാത യോട് ചേര്‍ന്ന് ചവറയുടെ ഹൃദയ ഭാഗത്ത് സ്ഥിതിചെയ്യുന്ന പുണ്യ പുരാതന ക്ഷേത്രമാണ് കൊറ്റന്‍ കുളങ്ങര ദേവീ ക്ഷേത്രം. 	
+ആചാരപ്പെരുമയും അനുഷ്ഠാന വൈചിത്ര്യവും കൊണ്ട@് ഏറെ പ്ര സിദ്ധവും അചഞ്ചലവുമായ വി ശ്വാസം അര്‍പ്പിക്കുന്ന ഭക്ത സഹ സ്രങ്ങള്‍ക്ക് അഭയവും ആത്മ സംതൃപ്തിയും അരുളുന്ന തിനാ ല്‍ നൂറ്റാ@ുകളായി ജനവിശ്വാ സം ആര്‍ജ്ജിച്ചതുമായ ദുര്‍ഗ്ഗാ ദേവിയുടെ സ്വയംഭൂവായ പ്രതി ഷ്ഠയുള്ള ക്ഷേത്രമാണ്. മുന്‍ ജന്മ ദോഷ പരിഹാരത്തിനും സര്‍വ്വ ദുരിത നിവാരണത്തിനും വേണ്ട@ി ഉഴലുന്ന ഭക്തജനങ്ങളുടെ രക്ഷാ കേന്ദ്രംകൂടിയാണ് ഇവിടം. തിരു വിതാംകൂര്‍ ദേവസ്വം ബോര്‍ഡി ന്‍റെ സവിശേഷശ്രദ്ധ ആകര്‍ഷി ക്കാന്‍ ഈ ആരാധനാലയ ത്തിന് കഴിഞ്ഞിട്ടു@ണ്ട്. ഭക്തജന സഹ സ്രങ്ങള്‍ക്ക് അഭയവും ആശ്വാസ വും അരുളുന്ന സാത്വികഭാവത്തി ലുള്ള സ്വയംഭൂവായ വനദുര്‍ഗ്ഗയു ടെ പുണ്യ പുരാതന ക്ഷേത്രമാണ് ചവറ ശ്രീ കൊറ്റന്‍കുളങ്ങര ദേവീ ക്ഷേത്രം. തിരുവിതാംകൂര്‍ ദേവ സ്വംബോര്‍ഡിന്‍റെ കീഴിലുള്ള മേജര്‍ക്ഷേത്രങ്ങളിലൊന്നായ  ഈ ക്ഷേത്രത്തിന്‍റെ പേരില്‍ ത ന്നെ ആത്മീയതയുടെ പരിപാവ നത്വം തുളുമ്പി നില്‍ക്കുന്നു. 
+ക്ഷേത്രം സ്ഥിതി ചെയ്യുന്ന സ്ഥലം പുരാതന കാലത്ത് കാടും പടലും ഇട തൂര്‍ന്ന് വളര്‍ന്നിരുന്ന സ്ഥല മായിരുന്നു. 
+                    </p>
+                <div class="about-text">
+                       <p>
+                        
+ഇപ്പോഴത്തെ ക്ഷേത്രാങ്കണത്തിന്‍റെ വടക്കു പടി ഞ്ഞാറെ മൂലയ്ക്ക് ഭൂതക്കുളം എന്നറി യപ്പെട്ടിരുന്ന ചെറിയകുളം ഇന്നു കാണുന്ന ക്ഷേത്രക്കുളത്തിന്‍റെ സ്ഥാ നത്ത് വിസ്തൃത മായ ചിറ. വര്‍ഷ കാലങ്ങളില്‍ കര കവിഞ്ഞ് സമീപ ത്തുള്ള പാടങ്ങളിലേക്ക് ഒഴുകുന്നു. പുല്ലും വെള്ളവും സുലഭമായ ഈ പ്രദേശത്ത് സമീപവാസികളായ കുട്ടി കള്‍ കാലി മേയ്ക്കാന്‍ ഇടം കണ്ടെ@ ത്തി. ഒരു ദിവസം അടര്‍ന്നു വീണു കിട്ടിയ നാളീകേരം ഭൂതക്കുളത്തിന് തെക്കു കിഴക്ക്  ഉയര്‍ന്നു നിന്നിരുന്ന ശിലയില്‍വച്ച് തൊണ്ട@് നീക്കംചെയ്യാ ന്‍ ശ്രമിക്കവേ നാളീകേരം ശിലയില്‍ തട്ടിയപ്പോള്‍ ശിലയില്‍ നിന്ന് നിണം വാര്‍ന്നു വന്നു. പരിഭ്രാന്തരായ അവര്‍ വീടുകളിലെ മുതിര്‍ന്ന വരെ വിവരം ധരിപ്പിച്ചു. നാട്ടുപ്രമാണിയുടെ നേതൃ ത്വത്തില്‍ പ്രശ്നം വയ്പിച്ച് നോക്കിയ പ്പോള്‍ ശിലയില്‍ സാത്വികഭാവത്തി ലുള്ള വനദുര്‍ഗ്ഗ കുടികൊള്ളുന്നു വെന്നും നാടിന്‍റെയും നാട്ടുകാരുടേ യും ഐ ശ്വര്യത്തിനു വേ@ി ക്ഷേത്രം നിര്‍മ്മിച്ച് പൂജാദികര്‍മ്മങ്ങള്‍ നിര്‍വ്വ ഹിക്കണമെന്നും കാണാന്‍കഴിഞ്ഞു.  അന്നേദിവസം മുതല്‍ നാളീകേരം ഇ ടിച്ച് പിഴിഞ്ഞെടുത്തു കൊറ്റന്‍ ദേവീ യ്ക്ക് നിവേദ്യമായി നല്‍കി. കുമാരന്മാ ര്‍ ബാലികമാരായി വേഷം അണിഞ്ഞ് ദേവിയുടെ മുന്നില്‍ വിളക്കെടുത്തു. ദിവ്യശിലയ്ക്ക് ചുറ്റും കുരുത്തോലപ്പ ന്തല്‍ കെട്ടിവിളക്കുവെച്ചു. കുളക്കരയി ലെ സ്വയംഭൂവായ വനദുര്‍ഗ്ഗയുടെ ക്ഷേത്രം പിന്നീട് കൊറ്റന്‍കുളങ്ങര ക്ഷേത്രമായി അറിയപ്പെട്ടു. വായൂ മണ്ഡ      ലം മേല്‍ക്കൂരായായി സങ്ക ല്‍പ്പിക്കണമെന്നും മേല്‍ക്കൂര പാടി ല്ലെന്നും ദേവപ്രശ്നവിധി ഉണ്ട@ായതി നാല്‍ താന്ത്രികവിധി പ്രകാരം നിര്‍മ്മി ച്ച മേല്‍ക്കൂരയില്ലാത്ത ശ്രീകോവിലി ല്‍  ഋതുഭേദങ്ങളെല്ലാം തന്നിലാ വാ ഹിച്ച് ശക്തി സ്വരൂപിണിയും എന്നാ ല്‍ വാത്സല്യ നിധിയുമായ ദേവി തന്‍റെ  ഭക്തരില്‍ കാരുണ്യാമൃതവര്‍ഷം ചൊ രിഞ്ഞ് ഇവിടെ വാണരുളുന്നു. ദുര്‍ ഗ്ഗാദേവിയെകൂടാതെ ശ്രീപരമേശ്വരന്‍, ശ്രീ മഹാഗണപതി, ശ്രീധര്‍മ്മ ശാസ്താവ്, യക്ഷിയമ്മ, മാടന്‍ഭഗവാന്‍, നാഗരാജാവ് ഭൂതഗണങ്ങളുടെ സ്ഥാനം എന്നിവര്‍ ഉപദേവ തമാരായു@ണ്ട്.  ഭക്തജ നങ്ങളുടെ ഇച്ഛാനുസരണം നടത്താറുള്ള കൊറ്റന്‍നിവേദ്യം, ഇടിച്ചു പിഴി ഞ്ഞ പായസം, പന്തിരുനാഴി തുട ങ്ങിയ വഴിപാടുകള്‍ക്ക് പുറമേ സ്ത്രീ സമൂഹം നാരങ്ങവിളക്കും ചന്ദ്രപൊങ്കാലയും  അഭംഗുരം ന ടത്തി വരുന്നു. ഉത്സവകാലത്ത്  പ്രധാന വഴിപാടാണ് അന്‍പൊ ലിപ്പറ, എന്നാല്‍  പ്രാധാന്യമുള്ള തും ഐതീഹ്യവുമായി ബന്ധ പ്പെട്ടതുമായ ആചാരമാണ് മീനം 10, 11 തീയതി കളില്‍ രാത്രിയില്‍ നടക്കുന്ന ചമയവിളക്ക്. അഭീഷ്ട കാര്യ സിദ്ധിക്കായ്പുരുഷന്മാര്‍ വ്രതാനുഷ്ഠാനത്തോടെ സ്ത്രീ വേഷം ധരിച്ച് ചമയവിളക്കെടുക്കു ന്നു. കിഴക്ക് കുഞ്ഞാലുംമൂട് മുത ല്‍ ആറാട്ടു കടവുവരെ വരിവരി യായി നില്‍ക്കുന്ന ആയിരക്കണ ക്കിന് ചമയവിളക്കുകള്‍ക്ക് അനു ഗ്രഹം ചൊരിയുന്നതിനായി ദേവി കുഞ്ഞാലുംമൂട്ടില്‍ നിന്നും എഴു ന്നെള്ളുന്നു. ദേവിയുടെ എഴുന്ന ള്ളത്ത് ഭക്തിനിര്‍ഭരമായ ആന ന്ദാനുഭൂതിയാണ് ഭക്തജനങ്ങളി ല്‍ ഉളവാക്കുന്നത്. ചമയവിളക്കണ്ട്, ആറാട്ട് കഴിഞ്ഞതിനുശേഷം കല്‍പ്പവൃക്ഷത്തിന്‍റെ സ്വര്‍ണ്ണ വര്‍ ണ്ണാഭമായ കുരുത്തോലയും കമു കും വാഴപ്പോളയും കൊ@ണ്ട് ക്ഷേത്രമാതൃകയില്‍ നിര്‍മ്മിച്ച കുരുത്തോല പന്തലില്‍ ദേവി വിശ്രമിക്കുന്നു. 
+ചവറ, പുതുക്കാട്, കുളങ്ങരഭാഗം, കോട്ടയ്ക്കകം എന്നീ നാല് കരകളുടെ നേതൃത്വത്തില്‍ വരു ന്ന വാദ്യഘോഷങ്ങളുടേയും, ഗജ വീരന്മാരുടെയും, വണ്ട@ിക്കുതിരക ളുടെയും, നിശ്ചലദൃശ്യങ്ങളുടെ യും സമന്വയസമ്മേളനമായ കെട്ടുകാഴ്ച ഉത്സവത്തിന്‍റെ ഒരു പ്രധാന ഇനമാണ്.
+
+                       </p>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+            </div>
+        </section>
+        <div id="notification">
+            <br><br><br>
+        </div>
+        <!-- Notification Section -->
+<div class="notification-container" >
+    <div class="notification-label">
+        <i class="notification-icon">📢</i>
+        <span>Announcements</span>
+    </div>
+    <div class="notification-content">
+        <div class="scrolling-notifications">
+           
+            <div class="notification-item">{{Genaral.notifications}}</div>
+                   {{!-- <div class="notification-item">ഭക്തജനങ്ങളുടെ ശ്രദ്ധയ്ക്ക്: വരുന്ന ഞായറാഴ്ച പ്രത്യേക അനുഷ്ഠാനം നടക്കുന്നതാണ്.</div>
+            <div class="notification-item">ക്ഷേത്രത്തിലെ വാർഷിക ഉത്സവം സെപ്റ്റംബർ 20 മുതൽ 25 വരെ.</div>
+            <div class="notification-item">ശനിയാഴ്ച രാവിലെ 10 മണിക്ക് ഭജന നടത്തുന്നതാണ്. എല്ലാവരും പങ്കെടുക്കുക.</div> --}}
+        </div>
+    </div>
+</div>
+
+<style>
+/* Notification Section Styling */
+.notification-container {
+    display: flex;
+    background-color: #fcf8e3;
+    border: 1px solid #faebcc;
+    margin: 15px auto;
+    max-width: 1200px;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.notification-label {
+    display: flex;
+    align-items: center;
+    background-color: #e8a317;
+    color: white;
+    padding: 10px 15px;
+    font-weight: bold;
+    min-width: 150px;
+    justify-content: center;
+}
+
+.notification-icon {
+    margin-right: 8px;
+    font-size: 1.2rem;
+}
+
+.notification-content {
+    flex: 1;
+    overflow: hidden;
+    padding: 10px 15px;
+    position: relative;
+}
+
+.scrolling-notifications {
+    display: flex;
+    animation: scroll 30s linear infinite;
+    white-space: nowrap;
+}
+
+.notification-item {
+    color: #8a6d3b;
+    padding: 0 20px;
+    font-size: 1rem;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(100%);
     }
-  });
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* Pause animation on hover */
+.notification-content:hover .scrolling-notifications {
+    animation-play-state: paused;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .notification-container {
+        flex-direction: column;
+    }
+    
+    .notification-label {
+        width: 100%;
+        min-width: unset;
+    }
+}
+
+/* Alternative vertical scrolling style */
+/* Uncomment this and comment out the horizontal scrolling above if you prefer vertical scrolling */
+/*
+.notification-content {
+    height: 60px;
+    overflow-y: hidden;
+}
+
+.scrolling-notifications {
+    display: block;
+    animation: verticalScroll 15s linear infinite;
+}
+
+.notification-item {
+    padding: 5px 0;
+    white-space: normal;
+}
+
+@keyframes verticalScroll {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(-100%);
+    }
+}
+*/
+</style>
+
+<script>
+// Optional: Adjust scrolling speed based on content length
+document.addEventListener('DOMContentLoaded', function() {
+    const container = document.querySelector('.scrolling-notifications');
+    const items = document.querySelectorAll('.notification-item');
+    
+    // Clone items for smoother infinite scrolling
+    items.forEach(item => {
+        const clone = item.cloneNode(true);
+        container.appendChild(clone);
+    });
+    
+    // Adjust animation duration based on content length
+    const totalWidth = container.scrollWidth;
+    const animationDuration = Math.max(totalWidth / 50, 15); // Minimum 15s, otherwise scale by content
+    container.style.animationDuration = animationDuration + 's';
+});
 </script>
-
-</body>
-</html>
-
-  <!--/ Services End /-->
-
-  <!--/ Property Star /-->
-  <section class="section-property section-t8">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="title-wrap d-flex justify-content-between">
-            <div class="title-box">
-              <h2 class="title-a">കമ്മിറ്റി അംഗങ്ങൾ</h2>
-            </div>
-            <div class="title-link">
-              <a href="">                <span class="ion-ios-arrow-forward"></span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="property-carousel" class="owl-carousel owl-theme">
-        {{#each previousWorks}}
-        <div class="carousel-item-b" >
-          <div class="card-box-a card-shadow" >
-            <div class="img-box-a">
-              <img src="images/uploadIMG/{{_id}}.jpg" alt="" class="img-a" style="height: 340px;">
-            </div>
-            <div class="card-overlay">
-              <div class="card-overlay-a-content">
-                <div class="card-header-a">
-                  <h2 class="card-title-a">
-                    {{!-- <a href="property-single.html"> --}}
-                      {{!-- <br /> {{description}}</a> --}}
-                  </h2>
+        <!-- Photo Gallery Section -->
+        <section id="gallary" class="container" >
+            <h2>Photo Gallery</h2>
+            <div class="gallery">
+                {{#each Interior}}
+                <div class="gallery-item">
+                    <img src="images/uploadIMG/{{_id}}.jpg" alt="Temple Main Entrance">
                 </div>
-                <div class="card-body-a">
-                  <div class="price-box d-flex">
-                    <span class="price-a">Committee</span>
-                  </div>
-                  {{!-- <a href="#" class="link-a">Click here to view --}}
-                    {{!-- <span class="ion-ios-arrow-forward"></span> --}}
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        {{/each}}
-
+                {{/each}}
+                
+        </section>
         
-        {{!-- <div class="carousel-item-b">
-          <div class="card-box-a card-shadow">
-            <div class="img-box-a">
-              <img src="img/property-3.jpg" alt="" class="img-a img-fluid">
+        <!-- Committee Members Section -->
+        <section id="committee" class="container">
+            <h2>Temple Committee</h2>
+            <p class="committee">Our dedicated committee members work tirelessly to manage the temple's operations and organize events for the community.</p>
+            <div class="committee-members">
+                {{#each previousWorks}}
+                <div class="member">
+                    <img src="images/uploadIMG/{{_id}}.jpg" alt="Committee President">
+                    <div class="member-info">
+                        <h3>Rajesh Kumar</h3>
+                        <p>President</p>
+                    </div>
+                </div>
+                {{/each}}
+                
             </div>
-            <div class="card-overlay">
-              <div class="card-overlay-a-content">
-                <div class="card-header-a">
-                  <h2 class="card-title-a">
-                    <a href="property-single.html">157 West
-                      <br /> Central Park</a>
-                  </h2>
-                </div>
-                <div class="card-body-a">
-                  <div class="price-box d-flex">
-                    <span class="price-a">rent | $ 12.000</span>
-                  </div>
-                  <a href="property-single.html" class="link-a">Click here to view
-                    <span class="ion-ios-arrow-forward"></span>
-                  </a>
-                </div>
-                <div class="card-footer-a">
-                  <ul class="card-info d-flex justify-content-around">
-                    <li>
-                      <h4 class="card-info-title">Area</h4>
-                      <span>340m
-                        <sup>2</sup>
-                      </span>
-                    </li>
-                    <li>
-                      <h4 class="card-info-title">Beds</h4>
-                      <span>2</span>
-                    </li>
-                    <li>
-                      <h4 class="card-info-title">Baths</h4>
-                       <span>4</span>
-                    </li>
-                    <li>
-                      <h4 class="card-info-title">Garages</h4>
-                      <span>1</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Kottankulangara Temple</p>
+                <p>Kollam,Chavara</p>
+                <p>Phone: (123) 456-7890</p>
+                <p>Email: info@Kottankulangara.org</p>
             </div>
-          </div>
-        </div> --}}
-        {{!-- <div class="carousel-item-b">
-          <div class="card-box-a card-shadow">
-            <div class="img-box-a">
-              <img src="img/property-7.jpg" alt="" class="img-a img-fluid">
+            <div class="footer-section">
+                <h3>Temple Hours</h3>
+                <p>Monday - Friday: 6:00 AM - 8:00 PM</p>
+                <p>Saturday - Sunday: 5:30 AM - 9:00 PM</p>
+                <p>Special Hours on Festival Days</p>
             </div>
-            <div class="card-overlay">
-              <div class="card-overlay-a-content">
-                <div class="card-header-a">
-                  <h2 class="card-title-a">
-                    <a href="property-single.html">245 Azabu
-                      <br /> Nishi Park let</a>
-                  </h2>
-                </div>
-                <div class="card-body-a">
-                  <div class="price-box d-flex">
-                    <span class="price-a">rent | $ 12.000</span>
-                  </div>
-                  <a href="property-single.html" class="link-a">Click here to view
-                    <span class="ion-ios-arrow-forward"></span>
-                  </a>
-                </div>
-                <div class="card-footer-a">
-                  <ul class="card-info d-flex justify-content-around">
-                    <li>
-                      <h4 class="card-info-title">Area</h4>
-                      <span>340m
-                        <sup>2</sup>
-                      </span>
-                    </li>
-                    <li>
-                      <h4 class="card-info-title">Beds</h4>
-                      <span>2</span>
-                    </li>
-                    <li>
-                      <h4 class="card-info-title">Baths</h4>
-                      <span>4</span>
-                    </li>
-                    <li>
-                      <h4 class="card-info-title">Garages</h4>
-                      <span>1</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> --}}
-        {{!-- <div class="carousel-item-b">
-          <div class="card-box-a card-shadow">
-            <div class="img-box-a">
-              <img src="img/property-10.jpg" alt="" class="img-a img-fluid">
-            </div>
-            <div class="card-overlay">
-              <div class="card-overlay-a-content">
-                <div class="card-header-a">
-                  <h2 class="card-title-a">
-                    <a href="property-single.html">204 Montal
-                      <br /> South Bela Two</a>
-                  </h2>
-                </div>
-                <div class="card-body-a">
-                  <div class="price-box d-flex">
-                    <span class="price-a">rent | $ 12.000</span>
-                  </div>
-                  <a href="property-single.html" class="link-a">Click here to view
-                    <span class="ion-ios-arrow-forward"></span>
-                  </a>
-                </div>
-                <div class="card-footer-a">
-                  <ul class="card-info d-flex justify-content-around">
-                    <li>
-                      <h4 class="card-info-title">Area</h4>
-                      <span>340m
-                        <sup>2</sup>
-                      </span>
-                    </li>
-                    <li>
-                      <h4 class="card-info-title">Beds</h4>
-                      <span>2</span>
-                    </li>
-                    <li>
-                      <h4 class="card-info-title">Baths</h4>
-                      <span>4</span>
-                    </li>
-                    <li>
-                      <h4 class="card-info-title">Garages</h4>
-                      <span>1</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> --}}
-      </div>
-    </div>
-  </section>
-  <!--/ Property End /-->
-
-  <!--/ Agents Star /-->
-  {{!-- <section class="section-agents section-t8">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="title-wrap d-flex justify-content-between">
-            <div class="title-box">
-              <h2 class="title-a">Best Agents</h2>
-            </div>
-            <div class="title-link">
-              <a href="agents-grid.html">All Agents
-                <span class="ion-ios-arrow-forward"></span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="card-box-d">
-            <div class="card-img-d">
-              <img src="img/agent-4.jpg" alt="" class="img-d img-fluid">
-            </div>
-            <div class="card-overlay card-overlay-hover">
-              <div class="card-header-d">
-                <div class="card-title-d align-self-center">
-                  <h3 class="title-d">
-                    <a href="agent-single.html" class="link-two">Margaret Sotillo
-                      <br> Escala</a>
-                  </h3>
-                </div>
-              </div>
-              <div class="card-body-d">
-                <p class="content-d color-text-a">
-                  Sed porttitor lectus nibh, Cras ultricies ligula sed magna dictum porta two.
-                </p>
-                <div class="info-agents color-a">
-                  <p>
-                    <strong>Phone: </strong> +54 356 945234</p>
-                  <p>
-                    <strong>Email: </strong> agents@example.com</p>
-                </div>
-              </div>
-              <div class="card-footer-d">
-                <div class="socials-footer d-flex justify-content-center">
-                  <ul class="list-inline">
-                    <li class="list-inline-item">
-                      <a href="#" class="link-one">
-                        <i class="fa fa-facebook" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                    <li class="list-inline-item">
-                      <a href="#" class="link-one">
-                        <i class="fa fa-twitter" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                    <li class="list-inline-item">
-                      <a href="#" class="link-one">
-                        <i class="fa fa-instagram" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                    <li class="list-inline-item">
-                      <a href="#" class="link-one">
-                        <i class="fa fa-pinterest-p" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                    <li class="list-inline-item">
-                      <a href="#" class="link-one">
-                        <i class="fa fa-dribbble" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card-box-d">
-            <div class="card-img-d">
-              <img src="img/agent-1.jpg" alt="" class="img-d img-fluid">
-            </div>
-            <div class="card-overlay card-overlay-hover">
-              <div class="card-header-d">
-                <div class="card-title-d align-self-center">
-                  <h3 class="title-d">
-                    <a href="agent-single.html" class="link-two">Stiven Spilver
-                      <br> Darw</a>
-                  </h3>
-                </div>
-              </div>
-              <div class="card-body-d">
-                <p class="content-d color-text-a">
-                  Sed porttitor lectus nibh, Cras ultricies ligula sed magna dictum porta two.
-                </p>
-                <div class="info-agents color-a">
-                  <p>
-                    <strong>Phone: </strong> +54 356 945234</p>
-                  <p>
-                    <strong>Email: </strong> agents@example.com</p>
-                </div>
-              </div>
-              <div class="card-footer-d">
-                <div class="socials-footer d-flex justify-content-center">
-                  <ul class="list-inline">
-                    <li class="list-inline-item">
-                      <a href="#" class="link-one">
-                        <i class="fa fa-facebook" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                    <li class="list-inline-item">
-                      <a href="#" class="link-one">
-                        <i class="fa fa-twitter" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                    <li class="list-inline-item">
-                      <a href="#" class="link-one">
-                        <i class="fa fa-instagram" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                    <li class="list-inline-item">
-                      <a href="#" class="link-one">
-                        <i class="fa fa-pinterest-p" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                    <li class="list-inline-item">
-                      <a href="#" class="link-one">
-                        <i class="fa fa-dribbble" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card-box-d">
-            <div class="card-img-d">
-              <img src="img/agent-5.jpg" alt="" class="img-d img-fluid">
-            </div>
-            <div class="card-overlay card-overlay-hover">
-              <div class="card-header-d">
-                <div class="card-title-d align-self-center">
-                  <h3 class="title-d">
-                    <a href="agent-single.html" class="link-two">Emma Toledo
-                      <br> Cascada</a>
-                  </h3>
-                </div>
-              </div>
-              <div class="card-body-d">
-                <p class="content-d color-text-a">
-                  Sed porttitor lectus nibh, Cras ultricies ligula sed magna dictum porta two.
-                </p>
-                <div class="info-agents color-a">
-                  <p>
-                    <strong>Phone: </strong> +54 356 945234</p>
-                  <p>
-                    <strong>Email: </strong> agents@example.com</p>
-                </div>
-              </div>
-              <div class="card-footer-d">
-                <div class="socials-footer d-flex justify-content-center">
-                  <ul class="list-inline">
-                    <li class="list-inline-item">
-                      <a href="#" class="link-one">
-                        <i class="fa fa-facebook" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                    <li class="list-inline-item">
-                      <a href="#" class="link-one">
-                        <i class="fa fa-twitter" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                    <li class="list-inline-item">
-                      <a href="#" class="link-one">
-                        <i class="fa fa-instagram" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                    <li class="list-inline-item">
-                      <a href="#" class="link-one">
-                        <i class="fa fa-pinterest-p" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                    <li class="list-inline-item">
-                      <a href="#" class="link-one">
-                        <i class="fa fa-dribbble" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section> --}}
-  <!--/ Agents End /-->
-
-  <!--/ News Star /-->
-  <section class="section-news section-t8">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="title-wrap d-flex justify-content-between">
-            <div class="title-box">
-              <h2 class="title-a">ആഘോഷങ്ങൾ</h2>
-            </div>
-            <div class="title-link">
-              <a href="/interior">
-                <span class="ion-ios-arrow-forward"></span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="new-carousel" class="owl-carousel owl-theme">
-          {{#each Interior}}
-        <div class="carousel-item-c">
-        
-          <div class="card-box-b card-shadow news-box">
-            <div class="img-box-b">
-              <img src="images/uploadIMG/{{_id}}.jpg" alt="" class="img-b" height="340px">
-            </div>
-            <div class="card-overlay">
-              <div class="card-header-b">
-                <div class="card-category-b">
-                  <a href="#" class="category-b">New Updates</a>
-                </div>
-                <div class="card-title-b">
-                  <h2 class="title-2">
-                    <a href="blog-single.html">{{description}}
-                      <br> </a>
-                  </h2>
-                </div>
-                <div class="card-date">
-                  <span class="date-b"></span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-     {{/each}}
-        {{!-- <div class="carousel-item-c">
-          <div class="card-box-b card-shadow news-box">
-            <div class="img-box-b">
-              <img src="img/post-5.jpg" alt="" class="img-b img-fluid">
-            </div>
-            <div class="card-overlay">
-              <div class="card-header-b">
-                <div class="card-category-b">
-                  <a href="#" class="category-b">Travel</a>
-                </div>
-                <div class="card-title-b">
-                  <h2 class="title-2">
-                    <a href="blog-single.html">Travel is comming
-                      <br> new</a>
-                  </h2>
-                </div>
-                <div class="card-date">
-                  <span class="date-b">18 Sep. 2017</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> --}}
-        {{!-- <div class="carousel-item-c">
-          <div class="card-box-b card-shadow news-box">
-            <div class="img-box-b">
-              <img src="img/post-7.jpg" alt="" class="img-b img-fluid">
-            </div>
-            <div class="card-overlay">
-              <div class="card-header-b">
-                <div class="card-category-b">
-                  <a href="#" class="category-b">Park</a>
-                </div>
-                <div class="card-title-b">
-                  <h2 class="title-2">
-                    <a href="blog-single.html">Park is comming
-                      <br> new</a>
-                  </h2>
-                </div>
-                <div class="card-date">
-                  <span class="date-b">18 Sep. 2017</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> --}}
-        {{!-- <div class="carousel-item-c">
-          <div class="card-box-b card-shadow news-box">
-            <div class="img-box-b">
-              <img src="img/post-3.jpg" alt="" class="img-b img-fluid">
-            </div>
-            <div class="card-overlay">
-              <div class="card-header-b">
-                <div class="card-category-b">
-                  <a href="#" class="category-b">Travel</a>
-                </div>
-                <div class="card-title-b">
-                  <h2 class="title-2">
-                    <a href="#">Travel is comming
-                      <br> new</a>
-                  </h2>
-                </div>
-                <div class="card-date">
-                  <span class="date-b">18 Sep. 2017</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> --}}
-      </div>
-    </div>
-  </section>
-  <!--/ News End /-->
-
-  <!--/ Testimonials Star /-->
-  {{!-- <section class="section-testimonials section-t8 nav-arrow-a">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="title-wrap d-flex justify-content-between">
-            <div class="title-box">
-              <h2 class="title-a">Our Clients</h2>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="testimonial-carousel" class="owl-carousel owl-arrow">
-        <div class="carousel-item-a">
-          <div class="testimonials-box">
-            <div class="row">
-              <div class="col-sm-12 col-md-6">
-                <div class="testimonial-img">
-                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRezoZJO431vYHkEmBMG_j2tQI48AbExbJnQw&s" alt="" style="height: 260px;width:90%">
-                </div>
-              </div>
-              <div class="col-sm-12 col-md-6">
-                <div class="testimonial-ico">
-                  <span class="ion-ios-quote"></span>
-                </div>
-                <div class="testimonials-content">
-                  <p class="testimonial-text">
-                    Excellent service and high-quality work!
-                  </p>
-                </div>
-                <div class="testimonial-author-box">
-                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRezoZJO431vYHkEmBMG_j2tQI48AbExbJnQw&s" alt="" class="testimonial-avatar">
-                  <h5 class="testimonial-author">Asset Home</h5>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="carousel-item-a">
-          <div class="testimonials-box">
-            <div class="row">
-              <div class="col-sm-12 col-md-6">
-                <div class="testimonial-img">
-                  <img src="https://www.media4growth.com/public/thumbs/news/2020/01/4602/kmrl_440_851.png" alt="" style="height: 260px;width:90%">
-                </div>
-              </div>
-              <div class="col-sm-12 col-md-6">
-                <div class="testimonial-ico">
-                  <span class="ion-ios-quote"></span>
-                </div>
-                <div class="testimonials-content">
-                  <p class="testimonial-text">
-                    Excellent service and high-quality work!
-                  </p>
-                </div>
-                <div class="testimonial-author-box">
-                  <img src="https://www.media4growth.com/public/thumbs/news/2020/01/4602/kmrl_440_851.png" alt="" class="testimonial-avatar">
-                  <h5 class="testimonial-author">KMRL</h5>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-         <div class="carousel-item-a">
-          <div class="testimonials-box">
-            <div class="row">
-              <div class="col-sm-12 col-md-6">
-                <div class="testimonial-img">
-                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_Uub0R2IsoQYk13StYRr3MKVHkG1nYDfYnw&s" alt="" style="height: 260px;width:90%">
-                </div>
-              </div>
-              <div class="col-sm-12 col-md-6">
-                <div class="testimonial-ico">
-                  <span class="ion-ios-quote"></span>
-                </div>
-                <div class="testimonials-content">
-                  <p class="testimonial-text">
-                    Excellent service and high-quality work!
-                  </p>
-                </div>
-                <div class="testimonial-author-box">
-                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_Uub0R2IsoQYk13StYRr3MKVHkG1nYDfYnw&s" alt="" class="testimonial-avatar">
-                  <h5 class="testimonial-author">International Airport Limited</h5>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="carousel-item-a">
-          <div class="testimonials-box">
-            <div class="row">
-              <div class="col-sm-12 col-md-6">
-                <div class="testimonial-img">
-                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbI5GEjTBEwDs4_fSL9xvTAR004HOizjMhzw&s" alt="" style="height: 260px;width:90%">
-                </div>
-              </div>
-              <div class="col-sm-12 col-md-6">
-                <div class="testimonial-ico">
-                  <span class="ion-ios-quote"></span>
-                </div>
-                <div class="testimonials-content">
-                  <p class="testimonial-text">
-                    Excellent service and high-quality work!
-                  </p>
-                </div>
-                <div class="testimonial-author-box">
-                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbI5GEjTBEwDs4_fSL9xvTAR004HOizjMhzw&s" alt="" class="testimonial-avatar">
-                  <h5 class="testimonial-author">Godrej Group</h5>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-         <div class="carousel-item-a">
-          <div class="testimonials-box">
-            <div class="row">
-              <div class="col-sm-12 col-md-6">
-                <div class="testimonial-img">
-                  <img src="https://img.etimg.com/thumb/msid-108834990,width-1200,height-900,resizemode-4,imgsize-14376/larsen-toubro-share-price-live-updates-28-mar-2024.jpg" alt="" style="height: 260px;width:90%">
-                </div>
-              </div>
-              <div class="col-sm-12 col-md-6">
-                <div class="testimonial-ico">
-                  <span class="ion-ios-quote"></span>
-                </div>
-                <div class="testimonials-content">
-                  <p class="testimonial-text">
-                    Excellent service and high-quality work!
-                  </p>
-                </div>
-                <div class="testimonial-author-box">
-                  <img src="https://img.etimg.com/thumb/msid-108834990,width-1200,height-900,resizemode-4,imgsize-14376/larsen-toubro-share-price-live-updates-28-mar-2024.jpg" alt="" class="testimonial-avatar">
-                  <h5 class="testimonial-author">Larsen & Toubro </h5>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="carousel-item-a">
-          <div class="testimonials-box">
-            <div class="row">
-              <div class="col-sm-12 col-md-6">
-                <div class="testimonial-img">
-                  <img src="https://superadmin.homes247.in/images/uploadPropertyImgs/1667544806-COVER%20IMAGE@72x-50.jpg" alt="" class="img-fluid">
-                </div>
-              </div>
-              <div class="col-sm-12 col-md-6">
-                <div class="testimonial-ico">
-                  <span class="ion-ios-quote"></span>
-                </div>
-                <div class="testimonials-content">
-                  <p class="testimonial-text">
-                   "Highly recommend this company for any construction needs."
-                  </p>
-                </div>
-                <div class="testimonial-author-box">
-                  <img src="https://superadmin.homes247.in/images/uploadPropertyImgs/1667544806-COVER%20IMAGE@72x-50.jpg" alt="" class="testimonial-avatar">
-                  <h5 class="testimonial-author">Dewa projects</h5>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section> --}}
-  <!--/ Testimonials End /-->
-
-  <!--/ footer Star /-->
-  <section class="section-footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12 col-md-4">
-          <div class="widget-a">
-            <div class="w-header-a">
-              <h3 class="w-title-a text-brand">Kottankulangara Temple</h3>
-            </div>
-            <div class="w-body-a">
-              <p class="w-text-a color-text-a">
-                Chavara PO
-                Kollam
-                Kerala
-              </p>
-            </div>
-            {{!-- <div class="w-footer-a">
-              <ul class="list-unstyled">
-                <li class="color-a">
-                  <span class="color-text-a">Email .</span> saconstructions9@gmaile.com</li>
-                <li class="color-a">
-                  <span class="color-text-a">Phone .</span> +91 8921397039</li>
-                  <span class="color-text-a">Phone .</span> +91 9074178188</li> <br>
-                  <span class="color-text-a">Phone .</span> +91 9526987124</li>
-
-
-              </ul>
-            </div> --}}
-          </div>
-        </div>
-        <div class="col-sm-12 col-md-4 section-md-t3">
-          <div class="widget-a">
-            <div class="w-header-a">
-              <h3 class="w-title-a text-brand">The Temple</h3>
-            </div>
-            <div class="w-body-a">
-              <div class="w-body-a">
-                <ul class="list-unstyled">
-                  <li class="item-list-a">
-                    <i class="fa fa-angle-right"></i> <a href="/contact">Site Map</a>
-                  </li>
-                  {{!-- <li class="item-list-a">
-                    <i class="fa fa-angle-right"></i> <a href="#">Legal</a>
-                  </li> --}}
-                  {{!-- <li class="item-list-a">
-                    <i class="fa fa-angle-right"></i> <a href="#">Agent Admin</a>
-                  </li> --}}
-                  {{!-- <li class="item-list-a">
-                    <i class="fa fa-angle-right"></i> <a href="#">Careers</a>
-                  </li> --}}
-                  {{!-- <li class="item-list-a">
-                    <i class="fa fa-angle-right"></i> <a href="#">Affiliate</a>
-                  </li> --}}
-                  {{!-- <li class="item-list-a">
-                    <i class="fa fa-angle-right"></i> <a href="#">Privacy Policy</a>
-                  </li> --}}
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        {{!-- <div class="col-sm-12 col-md-4 section-md-t3">
-          <div class="widget-a">
-            <div class="w-header-a">
-              <h3 class="w-title-a text-brand">SOME PROJECT EXPERIENCE</h3>
-            </div>
-            <div class="w-body-a">
-              <ul class="list-unstyled">
-                <li class="item-list-a">
-                  <i class="fa fa-angle-right"></i> <a href="#">Dewa projects</a>
-                </li>
-                <li class="item-list-a">
-                  <i class="fa fa-angle-right"></i> <a href="#">Larsen & Toubro</a>
-                </li>
-                <li class="item-list-a">
-                  <i class="fa fa-angle-right"></i> <a href="#">Pranavam le royale C/o Reciever ,
-Kerala High Court</a>
-                </li>
-                <li class="item-list-a">
-                  <i class="fa fa-angle-right"></i> <a href="#">S I constructions</a>
-                </li>
-                <li class="item-list-a">
-                  <i class="fa fa-angle-right"></i> <a href="#">Larson & Toubro</a>
-                </li>
-                <li class="item-list-a">
-                  <i class="fa fa-angle-right"></i> <a href="#">Godrej</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div> --}}
-      </div>
-    </div>
-  </section>
-  <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <nav class="nav-footer">
-            <ul class="list-inline">
-              <li class="list-inline-item">
+            <div class="footer-section">
+                <h3>Quick Links</h3>
                 <a href="#">Home</a>
-              </li>
-              <li class="list-inline-item">
                 <a href="#">About</a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">Property</a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">Blog</a>
-              </li>
-              <li class="list-inline-item">
+                <a href="#">Services</a>
+                <a href="#">Events</a>
+                <a href="#">Donations</a>
                 <a href="#">Contact</a>
-              </li>
-            </ul>
-          </nav>
-          <div class="socials-a">
-            <ul class="list-inline">
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fa fa-facebook" aria-hidden="true"></i>
-                </a>
-              </li>
-              {{!-- <li class="list-inline-item">
-                <a href="#">
-                  <i class="fa fa-twitter" aria-hidden="true"></i>
-                </a>
-              </li> --}}
-              <li class="list-inline-item">
-                <a href="https://www.instagram.com/kottankulangaratempleofficial/">
-                  <i class="fa fa-instagram" aria-hidden="true"></i>
-                </a>
-              </li>
-              {{!-- <li class="list-inline-item">
-                <a href="#">
-                  <i class="fa fa-pinterest-p" aria-hidden="true"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fa fa-dribbble" aria-hidden="true"></i>
-                </a>
-              </li> --}}
-            </ul>
-          </div>
-          <div class="copyright-footer">
-            <p class="copyright color-text-a">
-              &copy; Copyright
-              <span class="color-a">kottankulangaratemple</span> All Rights Reserved.
-            </p>
-          </div>
-          <div class="credits">
-            <!--
-              All the links in the footer should remain intact.
-              You can delete the links only if you purchased the pro version.
-              Licensing information: https://bootstrapmade.com/license/
-              Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=EstateAgency
-            -->
-            Designed by <a href="https://byteboot.in/">byteboot Techno solutions PVT LTD</a>
-          </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </footer>
-  <!--/ Footer End /-->
-
-  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-  <div id="preloader"></div>
-
-  <!-- JavaScript Libraries -->
-  <script src="lib/jquery/jquery.min.js"></script>
-  <script src="lib/jquery/jquery-migrate.min.js"></script>
-  <script src="lib/popper/popper.min.js"></script>
-  <script src="lib/bootstrap/js/bootstrap.min.js"></script>
-  <script src="lib/easing/easing.min.js"></script>
-  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-  <script src="lib/scrollreveal/scrollreveal.min.js"></script>
-  <!-- Contact Form JavaScript File -->
-  <script src="contactform/contactform.js"></script>
-
-  <!-- Template Main Javascript File -->
-  <script src="js/main.js"></script>
-
+        <div class="copyright">
+            <p>&copy; 2025 Sri Temple. All Rights Reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+        
+        // Auto-advance slides every 5 seconds
+        setInterval(function() {
+            changeSlide(1);
+        }, 5000);
+        
+        function changeSlide(n) {
+            showSlides(slideIndex += n);
+        }
+        
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+        
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("carousel-item");
+            let dots = document.getElementsByClassName("carousel-dot");
+            
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            
+            for (i = 0; i < slides.length; i++) {
+                slides[i].classList.remove("active");
+            }
+            
+            for (i = 0; i < dots.length; i++) {
+                dots[i].classList.remove("active");
+            }
+            
+            slides[slideIndex-1].classList.add("active");
+            dots[slideIndex-1].classList.add("active");
+        }
+    </script>
 </body>
 </html>

@@ -645,33 +645,218 @@
         min-width: unset;
     }
 }
-
-/* Alternative vertical scrolling style */
-/* Uncomment this and comment out the horizontal scrolling above if you prefer vertical scrolling */
-/*
-.notification-content {
-    height: 60px;
-    overflow-y: hidden;
-}
-
-.scrolling-notifications {
-    display: block;
-    animation: verticalScroll 15s linear infinite;
-}
-
-.notification-item {
-    padding: 5px 0;
-    white-space: normal;
-}
-
-@keyframes verticalScroll {
-    0% {
-        transform: translateY(100%);
+.gallery-section {
+      max-width: 1200px;
+      margin: 50px auto;
+      padding: 20px;
     }
-    100% {
-        transform: translateY(-100%);
+
+    .gallery-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
     }
-}
+
+    .gallery-item {
+      flex: 1;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Modal for zoomed view */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 100;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .modal-content {
+      max-width: 90%;
+      max-height: 90%;
+      animation: zoomIn 0.3s ease;
+    }
+
+    .modal-content img {
+      max-width: 100%;
+      max-height: 90vh;
+      display: block;
+      margin: 0 auto;
+      border: 5px solid white;
+      border-radius: 4px;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 40px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .close-btn:hover {
+      transform: rotate(90deg);
+    }
+
+    @keyframes zoomIn {
+      from {
+        transform: scale(0.5);
+      }
+      to {
+        transform: scale(1);
+      }
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .gallery-container {
+        flex-direction: column;
+      }
+      
+      .gallery-item {
+        margin-bottom: 20px;
+      }
+    }
+    .temple-info-section {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 28px;
+      color: #8B4513;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 100px;
+      height: 3px;
+      background-color: #FFD700;
+      margin: 10px auto;
+    }
+
+    .info-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: space-between;
+    }
+
+    .info-card {
+      flex: 1 1 300px;
+      background-color: #FFF8E1;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: fadeIn 0.8s ease;
+    }
+
+    .info-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-title {
+      font-size: 20px;
+      color: #8B4513;
+      border-bottom: 2px solid #FFD700;
+      padding-bottom: 10px;
+      margin-bottom: 15px;
+    }
+
+    .info-list {
+      list-style-type: none;
+    }
+
+    .info-list li {
+      margin-bottom: 12px;
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .info-list li::before {
+      content: '•';
+      color: #FFD700;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    .info-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      border-bottom: 1px dashed #ccc;
+      padding-bottom: 5px;
+    }
+
+    .info-item-title {
+      font-weight: bold;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .info-container {
+        flex-direction: column;
+      }
+      
+      .info-card {
+        margin-bottom: 20px;
+      }
+    }
+
 */
 </style>
 
@@ -693,6 +878,153 @@ document.addEventListener('DOMContentLoaded', function() {
     container.style.animationDuration = animationDuration + 's';
 });
 </script>
+
+
+<section class="gallery-section">
+    <div class="gallery-container">
+      <div class="gallery-item">
+        <img src="/img/Home_01.jpg" alt="First image">
+      </div>
+      <div class="gallery-item" style="padding: 10px;">
+        <img src="/img/Home_02.jpg" alt="Second image">
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal for zoomed view -->
+  <div class="modal" id="imageModal">
+    <span class="close-btn" onclick="closeModal()">&times;</span>
+    <div class="modal-content">
+      <img src="" id="modalImage" alt="Zoomed image">
+    </div>
+  </div>
+
+  <script>
+    // Get all gallery items
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    
+    // Add click event to each gallery item
+    galleryItems.forEach(item => {
+      item.addEventListener('click', function() {
+        const imgSrc = this.querySelector('img').src;
+        modalImg.src = imgSrc;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+      });
+    });
+    
+    // Close modal function
+    function closeModal() {
+      modal.classList.remove('active');
+      setTimeout(() => {
+        modal.style.display = 'none';
+      }, 300);
+      document.body.style.overflow = 'auto'; // Re-enable scrolling
+    }
+    
+    // Close modal when clicking outside the image
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+    
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && modal.classList.contains('active')) {
+        closeModal();
+      }
+    });
+  </script>
+<section class="temple-info-section">
+    <h2 class="section-title">ക്ഷേത്ര വിവരങ്ങൾ</h2>
+    
+    <div class="info-container">
+      <!-- Card 1: Special Days -->
+      <div class="info-card">
+        <h3 class="card-title">ക്ഷേത്രത്തിലെ വിശേഷ ദിവസങ്ങള്‍</h3>
+        <ul class="info-list">
+          <li><strong>മീനം 01 മുതല്‍ 8വരെ</strong>: പറയ്ക്ക്എഴുന്നള്ളത്ത്</li>
+          <li><strong>മീനം 10,11</strong>: ചമയവിളക്ക് മഹോത്സവം</li>
+          <li><strong>മേട മാസം</strong>: വിഷുക്കണി</li>
+          <li><strong>കന്നി മാസം</strong>: ശ്രീമദ് ഭാഗവത സപ്താഹയജ്ഞം</li>
+          <li><strong>കന്നി മാസം</strong>: നവരാത്രിമഹോത്സവം, പൂജവെയ്പ്പ്, പൂജയെടുപ്പ്</li>
+          <li><strong>വൃശ്ചിക മാസം</strong>: വൃശ്ചികച്ചിറപ്പ്, കളമെഴുത്തുംപാട്ടും</li>
+          <li><strong>കര്‍ക്കിടക മാസം</strong>: രാമായണമാസാചരണം</li>
+          <li><strong>ചിങ്ങ മാസം</strong>: നിറപ്പുത്ത</li>
+        </ul>
+      </div>
+      
+      <!-- Card 2: Main Offerings -->
+      <div class="info-card">
+        <h3 class="card-title">ദേവിയുടെ പ്രധാന നിവേദ്യങ്ങള്‍</h3>
+        <ul class="info-list">
+          <li>കൊറ്റന്‍ നിവേദ്യം, ഇടിപ്പായസം, ഇളനീര്‍ അഭിഷേകം</li>
+          <li>അടനിവേദ്യം, പന്തിരാഴി (അരവണ, വെള്ള, പായസം)</li>
+          <li>ചമയവിളക്ക് മഹോത്സവം (മീനം 10,11 തീയതികളില്‍)</li>
+        </ul>
+        
+        <h3 class="card-title" style="margin-top: 20px;">ഉപദേവതകള്‍</h3>
+        <ul class="info-list">
+          <li>ഗണപതി, ശിവന്‍, ശാസ്താവ്, യക്ഷിയമ്മ</li>
+          <li>മാടന്‍ സ്വാമി, സര്‍പ്പദൈവങ്ങള്‍, ഭൂതക്കുളം</li>
+        </ul>
+      </div>
+      
+      <!-- Card 3: Secondary Deity Offerings -->
+      <div class="info-card">
+        <h3 class="card-title">ഉപദേവതകളുടെ പ്രധാന വഴിപാട്</h3>
+        <ul class="info-list">
+          <li><strong>ശാസ്താവ്</strong>: നീരാജനം, എള്ളുപായസം</li>
+          <li><strong>യക്ഷിയമ്മ</strong>: മലര്‍ നിവേദ്യം, വറ നിവേദ്യം, കരിവള, പട്ടുചാര്‍ത്തല്‍, തൊട്ടില്‍ കെട്ടല്‍</li>
+          <li><strong>മാടന്‍ സ്വാമി</strong>: നാളികേരം ഉടയ്ക്കല്‍, തെരളി നിവേദ്യം</li>
+          <li><strong>ഗണപതി</strong>: ഉണ്ണിയപ്പം</li>
+          <li><strong>സര്‍പ്പ ദേവതകള്‍</strong>: നൂറും പാലും, ആയില്യ പൂജ</li>
+          <li>എല്ലാ മലയാള മാസവും രണ്ടാം വെള്ളിയാഴ്ചയും നാലാം വെള്ളിയാഴ്ചയും ഐശ്വര്യ പൂജ</li>
+        </ul>
+      </div>
+      
+      <!-- Card 4: Temple Timings -->
+      <div class="info-card">
+        <h3 class="card-title">ക്ഷേത്രത്തിലെ പൂജ സമയം</h3>
+        <div class="info-item">
+          <span class="info-item-title">നടതുറപ്പ്</span>
+          <span>രാവിലെ 05.00ന്</span>
+        </div>
+        <div class="info-item">
+          <span class="info-item-title">ഉഷപൂജ</span>
+          <span>07.30ന്</span>
+        </div>
+        <div class="info-item">
+          <span class="info-item-title">ഉച്ചപൂജ</span>
+          <span>10.30ന്</span>
+        </div>
+        <div class="info-item">
+          <span class="info-item-title">നട അടപ്പ്</span>
+          <span>11.00ന്</span>
+        </div>
+        <div class="info-item">
+          <span class="info-item-title">നടതുറപ്പ്</span>
+          <span>വൈകിട്ട് 05.00ന്</span>
+        </div>
+        <div class="info-item">
+          <span class="info-item-title">ദീപാരാധന</span>
+          <span>06.15ന്</span>
+        </div>
+        <div class="info-item">
+          <span class="info-item-title">അത്താഴപൂജ</span>
+          <span>07.30ന്</span>
+        </div>
+        <div class="info-item">
+          <span class="info-item-title">നടഅടപ്പ്</span>
+          <span>രാത്രി 08.00ന്</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  
         <!-- Photo Gallery Section -->
         {{!-- <section id="gallary" class="container" >
             <h2>Photo Gallery</h2>

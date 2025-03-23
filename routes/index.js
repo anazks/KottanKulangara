@@ -45,4 +45,7 @@ router.get('/interior', async(req,res)=>{
     res.redirect('/')
   }
 })
+router.get('/getLocation',(req,res)=>{
+  res.json({location:'Perumpulikkal',area:"Pandalam",college:"Nss polytechnic"})
+})
 module.exports = router;

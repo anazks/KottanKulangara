@@ -7,6 +7,10 @@ const newsModel = new mongoose.Schema({
     category: {
         type: String,
         required: true
+    },
+    position: {
+        type: String,
+        required: true
     }
 })
 

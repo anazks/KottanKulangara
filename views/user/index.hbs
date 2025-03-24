@@ -484,22 +484,23 @@
 </head>
 <body>
     <!-- Banner Carousel Section -->
-  <div class="carousel">
+ <div class="carousel">
+    <!-- Scrolling Banner -->
+    <div class="scrolling-banner-container">
+        <div class="scrolling-banner">
+            <span>Kottankulangara Temple Official Website</span>
+        </div>
+    </div>
+    
     <div class="carousel-inner">
         <div class="carousel-item active" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/img/Banner 03.jpg') no-repeat center center; background-size: cover;">
-            {{!-- <div class="carousel-caption">
-                <h2>ശ്രീ കൊറ്റൻകുളങ്ങര ദേവീക്ഷേത്രം</h2>
-            </div> --}}
+            <!-- Carousel caption removed as in original -->
         </div>
         <div class="carousel-item" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/img/Banner 02.jpg') no-repeat center center; background-size: cover;">
-            {{!-- <div class="carousel-caption">
-                <h2>ശ്രീ കൊറ്റൻകുളങ്ങര ദേവീക്ഷേത്രം</h2>
-            </div> --}}
+            <!-- Carousel caption removed as in original -->
         </div>
         <div class="carousel-item" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/img/Banner 3.jpg') no-repeat center center; background-size: cover;">
-            {{!-- <div class="carousel-caption">
-                <h2>ശ്രീ കൊറ്റൻകുളങ്ങര ദേവീക്ഷേത്രം</h2>
-            </div> --}}
+            <!-- Carousel caption removed as in original -->
         </div>
     </div>
     
@@ -512,6 +513,80 @@
     <div class="carousel-arrow carousel-prev" onclick="changeSlide(-1)">&#10094;</div>
     <div class="carousel-arrow carousel-next" onclick="changeSlide(1)">&#10095;</div>
 </div>
+
+<style>
+    /* Scrolling Banner Styles */
+    .scrolling-banner-container {
+        position: absolute;
+        top: 10px;
+        left: 0;
+        width: 100%;
+        overflow: hidden;
+        z-index: 10;
+        padding: 10px 0;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    
+    .scrolling-banner {
+        white-space: nowrap;
+        animation: scroll-left-to-right 20s linear infinite;
+    }
+    
+    .scrolling-banner span {
+        display: inline-block;
+        padding: 5px;
+        color: #fff;
+        font-size: 24px;
+        font-weight: bold;
+    }
+    
+    @keyframes scroll-left-to-right {
+        0% {
+            transform: translateX(-100%);
+        }
+        100% {
+            transform: translateX(100%);
+        }
+    }
+</style>
+
+<script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
+    
+    function changeSlide(n) {
+        showSlides(slideIndex += n);
+    }
+    
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+    
+    function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("carousel-item");
+        let dots = document.getElementsByClassName("carousel-dot");
+        
+        if (n > slides.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = slides.length}
+        
+        for (i = 0; i < slides.length; i++) {
+            slides[i].classList.remove("active");
+        }
+        
+        for (i = 0; i < dots.length; i++) {
+            dots[i].classList.remove("active");
+        }
+        
+        slides[slideIndex-1].classList.add("active");
+        dots[slideIndex-1].classList.add("active");
+    }
+    
+    // Auto slideshow
+    setInterval(() => {
+        changeSlide(1);
+    }, 5000);
+</script>
 
 
     <!-- Social Media Icons -->

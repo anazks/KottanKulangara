@@ -63,7 +63,7 @@ const update = async (req,res)=>{
         let {id} = req.params;
         let FilefromDb = await filesModel.findById({_id:id})
         console.log(FilefromDb,"---")
-        res.render('admin/updateform',{FilefromDb})
+        res.render('Amin/updateform',{FilefromDb})
     } catch (error) {
         console.log(error)
         res.render('admin/home')

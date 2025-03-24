@@ -1119,10 +1119,10 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="committee-members">
                 {{#each previousWorks}}
                 <div class="member">
-                    <img src="images/uploadIMG/{{_id}}.jpg" alt="Committee President">
+                    <img src="/images/uploadIMG/{{_id}}.jpg" alt="Committee President">
                     <div class="member-info">
                         <h3>{{description}}</h3>
-                        {{!-- <p>President</p> --}}
+                        <p>{{position}}</p>
                     </div>
                 </div>
                 {{/each}}
